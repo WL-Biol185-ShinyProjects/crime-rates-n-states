@@ -1,2 +1,4 @@
 # crime-rates-n-states
-Interactive guide of crime rates between states
+
+This is an interactive guide of crime rates and other features between states.
+Hi, friends.
