@@ -1,7 +1,7 @@
 # crime-rates-n-states
 
 
-Hey
+This is an interactive guide of crime rates and other features between states.
 
 
 
