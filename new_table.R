@@ -18,3 +18,9 @@ library(dplyr)
 aggregate <- select(aggregate, -3, -16, -18, -19)
 aggregate <- select(aggregate, -15)
 
+# made a table with a key for the offense ID type
+offense_type_id_key <- read.csv("NIBRS_OFFENSE_TYPE.CSV")
+View(offense_type_id_key)
+
+
+
