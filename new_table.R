@@ -8,3 +8,5 @@ readStateTables <- function(file){
 tables <- lapply(filenames, readStateTables)
 aggregate <- do.call(rbind, tables)
 aggregate
+
+aggregate$state_name <- substr(aggregate$file, 16, 17)
