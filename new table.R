@@ -1,6 +1,6 @@
 filenames <- list.files(pattern = ".csv")
 readStateTables <- function(file){
-  d <-read.cvs(file)
+  d <-read.csv(file)
   d$file <- file
   d
 }
