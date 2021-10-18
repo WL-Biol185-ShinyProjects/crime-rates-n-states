@@ -1,0 +1,85 @@
+
+# Offense vs. Indentities
+
+fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("crime",
+                  label = "Choose a Type of Offense",
+                  choices = c("1", "2"))
+    ),
+    selectInput("Demographic",
+                label = "Choose a Study Demographic",
+                choices = c("Age", "Sex", "Race"))
+  ),
+  mainPanel(
+    plotOutput("bar"),
+  )
+)
+
+# Bar for Offense Type and Demographic ID
+
+## What is the gender, race, ethnicity, under18 breakdown for different crimes?
+
+p <- offense type
+q <- gender, race, age, ethnicity, under18
+
+ggplot(dat, 
+       aes(p, fill = q)) + 
+  geom_bar() + 
+  theme(legend.position = "right")
+
+## Bar for State and Offense Type
+p <- state
+q <- offense type
+
+ggplot(dat, 
+       aes(p, fill = q)) + 
+  geom_bar() + 
+  theme(legend.position = "right")
+
+## Bar for Offense Type, State, and Demographic ID
+
+```{r}
+p <- state
+q <- offense type
+t <- ethnicity
+
+ggplot(dat$p, 
+       aes(q, fill = t)) + 
+  geom_bar() + 
+  theme(legend.position = "right")
+```
+
+
+## Scatterplot for Age and Crime
+
+p <- age
+q <- offense type
+t <- gender, race, ethnicity
+
+ggplot(dat, aes(p, fill = q)) + geom_point(alpha = 0.3) +  geom_smooth(method = "loess")
+```
+
+## Date and Crime
+
+p <- offense type 
+d <- date
+
+gplot(color = p) +
+  geom_step(dat, 
+            aes(x= d, y= ), 
+            direction = "hv")
+
+
+## Digital crime (hacking, etc) rates between 2009, 2014, 2019
+
+## Correlation with other demographic factors? (religion, political leaning etc.)
+
+## Murder rate in states with stricter gun control laws versus states with more lax gun
+
+## Are crimes rates alleviated in areas with social support structures?
+
+## Do crime rates increase in areas with other issues? (ex. Add socex data for food environmental (food desert) index, high poverty (median household income), high homelessness), population density (if we can get county crime data), average education level?
+
+## Progression of drug crimes between 1999, 2009, and 2019—maybe in states that have legalized marijuana we could do a like highlight thing
