@@ -13,6 +13,7 @@ aggregate
 # added a column with state names
 aggregate$state_name <- substr(aggregate$file, 16, 17)
 
+<<<<<<< HEAD
 # deleted useless columns: incident id, clearance, age_range_low (same as age), age_range_high (always 0), file name
 library(dplyr)
 aggregate <- select(aggregate, -3, -16, -18, -19)
@@ -25,3 +26,5 @@ aggregate <- select(aggregate, -15)
 
 
 
+=======
+>>>>>>> 9826af9748c93bf6fc5d7f13a3640d0d5238a560
