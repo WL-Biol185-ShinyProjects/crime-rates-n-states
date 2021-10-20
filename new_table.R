@@ -41,6 +41,3 @@ aggregate <- select(aggregate, -15)
 
 #replace sex code data
 
-  
-
-
