@@ -19,10 +19,28 @@ aggregate <- select(aggregate, -15)
 
 #renaming values as race names in a new column
 
-race <- c("Unknown", "White", "Black or African American", "American Indian or Alaska Native", "Asian", "Asian, Native Hawaiian, or Other Pacific Islander", "Chinese", "Japanese", "Native Hawaiian or Other Pacific Islander", "Other", "Multiple", "Not Specified") 
+  race <- c("Unknown", "White", "Black or African American", "American Indian or Alaska Native", "Asian", "Asian, Native Hawaiian, or Other Pacific Islander", "Chinese", "Japanese", "Native Hawaiian or Other Pacific Islander", "Other", "Multiple", "Not Specified") 
 
-names(race) <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "98", "99")
+  names(race) <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "98", "99")
 
-aggregate$RACE <- race[as.character(aggregate$RACE_ID)]
+  aggregate$RACE <- race[as.character(aggregate$RACE_ID)]
 
-View(aggregate)
+  View(aggregate)
+
+
+#replacing offender type data
+  offense_type_id_key <- read.csv(NIBRS_OFFENSE_TYPE.CSV)
+
+  offense_type <- offense_type_id_key$OFFENSE_NAME
+
+  names(offense_type) <- offense_type_id_key$OFFENSE_TYPE_ID
+
+  aggregate$offense_type <- offense_type[as.character(aggregate$OFFENSE_TYPE_ID)]
+
+  View(aggregate)
+
+#replace sex code data
+
+  
+
+
