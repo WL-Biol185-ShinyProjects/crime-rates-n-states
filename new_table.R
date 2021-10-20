@@ -49,7 +49,7 @@ aggregate <- select(aggregate, -15)
   
 #deleting more useless columns
   library(dplyr)
-  aggregate_edited <- select(aggregate, -1, -2, -3, -5, -6, -7, -8, -10, -11, -12, -13, -14, -16)
+  aggregate_edited <- select(aggregate, -2, -3, -5, -6, -7, -8, -10, -11, -12, -13, -14, -16)
 
   
   View(aggregate_edited)
