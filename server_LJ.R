@@ -1,38 +1,37 @@
 library(shiny)
+library(ggplot2)
 
-# Bar : Count Offense by Identity
+# Bar : Offense by Race & Sex
 
-function(input, output) {
-  
+function(input, output) { 
   x <- reactive({
     if(
-      input$ArrestType == "normal") {
-      rnorm(100, input$number)
+      input$RaceSexType == "Race") {
+      'rnorm(100, input$number)'
+      #how to change this pull from race column
     } else {
-      runif(100, max = input$number)
+      'runif(100, max = input$number)'
+      #how to change this pull from sex column
     }
   })
+  
+  #add offense type
   
   output$bar <- renderPlot({
     
-    col <- if (input$distribution == "normal") {"lightblue"
-    } else { 
-      "lightgreen"
-    }
+    #how to change this input of race, sex, and offense types
     
-    p <- offense type
-    q <- gender, race, age, ethnicity, under18
-    
-    ggplot(dat, 
-           aes(p, fill = q)) + 
-      geom_bar() + 
-      theme(legend.position = "right")
-  })
+    ggplot(aggregate, 
+           aes_string(input$ 'race or sex' , input$ 'offense type' , ) + 
+           geom_bar() + 
+           theme(legend.position = "top")
+          )
+                          })
   
-  output$summary <- renderText({
-    summary(x())
-    
-  })
-}
+    output$summary <- renderText({
+      summary(x())
+      
+                          })
+                       }
 
 

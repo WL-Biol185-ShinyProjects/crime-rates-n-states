@@ -1,21 +1,20 @@
 library(shiny)
 
-# Bar : Count Offense by Identity
+# Bar : Offense by Race & Sex
 
 fluidPage(
   sidebarLayout(
     sidebarPanel(
-      selectInput("Arrest Type",
-                  label = "Choose a Arrest",
+      selectInput("OffenseType",
+                  label = "Choose a Offense Type",
                   choices = c("normal", "uniform"))
       ),
-      selectInput("Identity",
-                  label = "Choose a Arrest",
-                  choices = c("Ethnicity", "Sex", "Age"))
+      selectInput("RaceSex",
+                  label = "Choose a Race or Sex",
+                  choices = c("Race", "Sex"))
     ),
     mainPanel(
       plotOutput("bar"),
       textOutput("summary")
     )
   )
-)
