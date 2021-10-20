@@ -39,17 +39,17 @@ aggregate <- select(aggregate, -15)
 #replace sex code data
   sex <- c("Male", "Female")
   names(sex) <- c("M", "F")
-  aggregate$sex <- sex[as.character(aggregate$SEX_CODE)]
+  aggregate$sex <- sex[(aggregate$SEX_CODE)]
   
 #replace resident code data
   resident <- c("Resident", "Non-resident")
   names(resident) <- c("R", "N")
-  aggregate$resident <- resident[as.character(aggregate$RESIDENT_CODE)]
+  aggregate$resident <- resident[(aggregate$RESIDENT_CODE)]
   
   
 #deleting more useless columns
   library(dplyr)
-  aggregate_edited <- select(aggregate, -2, -3, -5, -6, -7, -8, -10, -11, -12, -13, -14, -16)
+  aggregate_edited <- select(aggregate, -2, -3, -5, -6, -7, -8, -10, -11, -12, -13, -14)
 
   
   View(aggregate_edited)
