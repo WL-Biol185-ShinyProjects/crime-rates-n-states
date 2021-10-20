@@ -51,6 +51,14 @@ aggregate <- select(aggregate, -15)
   library(dplyr)
   aggregate_edited <- select(aggregate, -2, -3, -5, -6, -7, -8, -10, -11, -12, -13, -14)
 
+
+# change column names
+  library(dplyr)
+  aggregate_edited <- aggregate_edited %>%
+    rename(year        = DATA_YEAR,
+           arrest_date = ARREST_DATE,
+           age         = AGE_NUM)
+  
   
   View(aggregate_edited)
   
