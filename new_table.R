@@ -19,10 +19,7 @@ aggregate <- select(aggregate, -15)
 
 #renaming values as race names in a new column
 
-race <- c("Unknown", "White", "Black or African American", "American Indian or Alaska Native", "Asian", "Asian, Native Hawaiian, or Other Pacific Islander", "Chinese", "Japanese", "Native Hawaiian or Other Pacific Islander", "Other", "Multiple", "Not Specified") 
-
-names(race) <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "98", "99")
-
-aggregate$RACE <- race[as.character(aggregate$RACE_ID)]
-
+race            <- c("Unknown", "White", "Black or African American", "American Indian or Alaska Native", "Asian", "Asian, Native Hawaiian, or Other Pacific Islander", "Chinese", "Japanese", "Native Hawaiian or Other Pacific Islander", "Other", "Multiple", "Not Specified") 
+names(race)     <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "98", "99")
+aggregate$RACE  <- race[as.character(aggregate$RACE_ID)]
 View(aggregate)
