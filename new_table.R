@@ -29,8 +29,6 @@ offense_type           <- offense_type_id_key$OFFENSE_NAME
 names(offense_type)    <- offense_type_id_key$OFFENSE_TYPE_ID
 aggregate$offense_type <- offense_type[as.character(aggregate$OFFENSE_TYPE_ID)]
 
-
-
 #replace sex code data
 sex           <- c("Male", "Female")
 names(sex)    <- c("M", "F")
@@ -55,3 +53,7 @@ aggregate_edited <- aggregate_edited %>%
          age         = AGE_NUM)
 
 View(aggregate_edited)
+
+
+library(dplyr)
+xtabs(~ state_name + sex, data = aggregate_edited)
