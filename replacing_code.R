@@ -3,12 +3,18 @@ library(maps)
 library(dplyr)
 library(tidyverse)
 
-aggregate_edited %>%
+percentagetable <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
-  summarise(crime = n()) %>%
-  summarise(percentcrime = n) %>%
-  View()
-
+  summarise(crimes = n()) %>%
+  as.data.frame()
+## need to debug this
+percentagetable$totalbystate <- aggregate_edited %>%
+  group_by(state_name) %>%
+  summarise(totalcrimes = n()) %>%
+  as.data.frame()
+  
+View(percentagetable)
+  
 
 #listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'ID', 'IL', 
 #                  'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 
