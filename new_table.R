@@ -5,7 +5,7 @@ readStateTables <- function(file){
   d
 }
 
-tables <- lapply(filenames, readStateTables)
+tables    <- lapply(filenames, readStateTables)
 aggregate <- do.call(rbind, tables)
 aggregate
 
@@ -18,32 +18,25 @@ aggregate <- select(aggregate, -3, -16, -18, -19)
 aggregate <- select(aggregate, -15)
 
 #renaming values as race names in a new column
-race <- c("Unknown", "White", "Black or African American", "American Indian or Alaska Native", "Asian", "Asian, Native Hawaiian, or Other Pacific Islander", "Chinese", "Japanese", "Native Hawaiian or Other Pacific Islander", "Other", "Multiple", "Not Specified") 
-
-names(race) <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "98", "99")
-
+race           <- c("Unknown", "White", "Black or African American", "American Indian or Alaska Native", "Asian", "Asian, Native Hawaiian, or Other Pacific Islander", "Chinese", "Japanese", "Native Hawaiian or Other Pacific Islander", "Other", "Multiple", "Not Specified") 
+names(race)    <- c("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "98", "99")
 aggregate$race <- race[as.character(aggregate$RACE_ID)]
 
 
 #replacing offender type data
-offense_type_id_key <- read.csv(NIBRS_OFFENSE_TYPE.CSV)
-
-offense_type <- offense_type_id_key$OFFENSE_NAME
-
-names(offense_type) <- offense_type_id_key$OFFENSE_TYPE_ID
-
+offense_type_id_key    <- read.csv(NIBRS_OFFENSE_TYPE.CSV)
+offense_type           <- offense_type_id_key$OFFENSE_NAME
+names(offense_type)    <- offense_type_id_key$OFFENSE_TYPE_ID
 aggregate$offense_type <- offense_type[as.character(aggregate$OFFENSE_TYPE_ID)]
 
-
-
 #replace sex code data
-sex <- c("Male", "Female")
-names(sex) <- c("M", "F")
+sex           <- c("Male", "Female")
+names(sex)    <- c("M", "F")
 aggregate$sex <- sex[(aggregate$SEX_CODE)]
 
 #replace resident code data
-resident <- c("Resident", "Non-resident")
-names(resident) <- c("R", "N")
+resident           <- c("Resident", "Non-resident")
+names(resident)    <- c("R", "N")
 aggregate$resident <- resident[(aggregate$RESIDENT_CODE)]
 
 
@@ -59,5 +52,8 @@ aggregate_edited <- aggregate_edited %>%
          arrest_date = ARREST_DATE,
          age         = AGE_NUM)
 
-
 View(aggregate_edited)
+
+
+library(dplyr)
+xtabs(~ state_name + sex, data = aggregate_edited)

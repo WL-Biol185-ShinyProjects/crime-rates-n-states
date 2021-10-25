@@ -9,69 +9,52 @@ output: word_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
-# Offense vs. Indentities
-
-
-#should do age as a histogram
+```{r import library}
+library(ggplot2)
+```
 
 
-# Bar for Offense Type and Demographic ID
-
-# What is the gender, race, ethnicity, under18 breakdown for different crimes?
-
-p <- offense type
-q <- gender, race, age, ethnicity, under18
-
-ggplot(dat, 
-       aes(p, fill = q)) + 
-  geom_bar() + 
-  theme(legend.position = "right")
-
-# Bar for State and Offense Type
-p <- state
-q <- offense type
-
-ggplot(dat, 
-       aes(p, fill = q)) + 
-  geom_bar() + 
-  theme(legend.position = "right")
-
-# Bar for Offense Type, State, and Demographic ID
+# Bar: Offense vs. Indentities
+ui: add offense types
+server: add offense type selection options
 
 ```{r}
-p <- state
-q <- offense type
-t <- ethnicity
-
-ggplot(dat$p, 
-       aes(q, fill = t)) + 
-  geom_bar() + 
-  theme(legend.position = "right")
+ggplot(aggregate_edited, 
+       aes(race, offense_type) + 
+geom_bar() + 
+theme(legend.position = "top"))
 ```
 
 
-## Scatterplot for Age and Crime
+# Histogram: Age of offenses by state
+ui: add offense types, select state
+server: add offense type selection options, select state
 
-p <- age
-q <- offense type
-t <- gender, race, ethnicity
-
-ggplot(dat, aes(p, fill = q)) + geom_point(alpha = 0.3) +  geom_smooth(method = "loess")
+```{r}
+ggplot(aggregate_edited, aes(x= age)) + 
+geom_histogram(color = "darkblue", 
+               fill= "lightblue") + 
+geom_vline(xintercept = mean(aggregate_edited$age), 
+           linetype = "dashed", 
+           size = 2, 
+           color = "black")
 ```
 
-## Date and Crime
+# Bar for State and Offense Type
 
-p <- offense type 
-d <- date
+```{r}
+ggplot(aggregate_edited, 
+       aes(state_name, offense_type) + 
+geom_bar() + 
+theme(legend.position = "top"))
+```
 
-gplot(color = p) +
-  geom_step(dat, 
-            aes(x= d, y= ), 
-            direction = "hv")
+# Time & Crime
 
 
 # Correlation with other demographic factors? (religion, political leaning etc.)
+
+
 
 # Are crimes rates alleviated in areas with social support structures?
 
