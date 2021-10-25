@@ -1,10 +1,12 @@
 library(ggplot2)
 library(maps)
 library(dplyr)
+library(tidyverse)
 
 aggregate_edited %>%
   group_by(state_name, offense_type) %>%
-  summarise(totalcrime = n()) %>%
+  summarise(crime = n()) %>%
+  summarise(percentcrime = n) %>%
   View()
 
 
