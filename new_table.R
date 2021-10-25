@@ -1,4 +1,4 @@
-filenames       <- list.files(pattern = ".csv")
+filenames       <- list.files(path = ".", pattern = ".csv")
 readStateTables <- function(file){
   d             <-read.csv(file)
   d$file        <- file
