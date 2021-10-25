@@ -1,7 +1,7 @@
-filenames <- list.files(pattern = ".csv")
+filenames       <- list.files(pattern = ".csv")
 readStateTables <- function(file){
-  d <-read.csv(file)
-  d$file <- file
+  d             <-read.csv(file)
+  d$file        <- file
   d
 }
 
@@ -53,7 +53,3 @@ aggregate_edited <- aggregate_edited %>%
          age         = AGE_NUM)
 
 View(aggregate_edited)
-
-
-library(dplyr)
-xtabs(~ state_name + sex, data = aggregate_edited)
