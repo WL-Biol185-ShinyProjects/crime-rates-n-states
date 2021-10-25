@@ -1,0 +1,87 @@
+OFFENSE_TYPE_ID,OFFENSE_NAME
+71,Illegal Entry into the United States
+72,False Citizenship
+73,Smuggling Aliens
+74,Re-entry after Deportation
+75,Failure to Register as a Sex Offender
+76,Harboring Escapee/Concealing from Arrest
+77,Flight to Avoid Prosecution
+78,Flight to Avoid Deportation
+79,Violation of National Firearm Act of 1934
+80,Weapons of Mass Destruction
+81,Explosives Violation
+82,Import Violations
+83,Export Violations
+84,Federal Liquor Offenses
+85,Federal Tobacco Offenses
+86,Wildlife Trafficking
+58,Not Specified
+1,Justifiable Homicide
+2,False Pretenses/Swindle/Confidence Game
+3,Statutory Rape
+4,Sexual Assault With An Object
+5,Destruction/Damage/Vandalism of Property
+6,"Family Offenses, Nonviolent"
+7,Theft of Motor Vehicle Parts or Accessories
+8,Pornography/Obscene Material
+9,Sports Tampering
+11,Counterfeiting/Forgery
+12,Welfare Fraud
+13,Pocket-picking
+14,Theft From Motor Vehicle
+15,Assisting or Promoting Prostitution
+16,Drug/Narcotic Violations
+17,Wire Fraud
+18,Purse-snatching
+19,Runaway
+20,Arson
+21,Motor Vehicle Theft
+22,Drunkenness
+23,Shoplifting
+24,Operating/Promoting/Assisting Gambling
+25,Bad Checks
+26,Extortion/Blackmail
+27,Aggravated Assault
+28,Stolen Property Offenses
+29,Kidnapping/Abduction
+30,Prostitution
+31,Betting/Wagering
+32,Murder and Nonnegligent Manslaughter
+33,Peeping Tom
+34,Trespass of Real Property
+35,Drug Equipment Violations
+37,Embezzlement
+38,Negligent Manslaughter
+39,Weapon Law Violations
+40,Robbery
+41,Credit Card/Automated Teller Machine Fraud
+42,Curfew/Loitering/Vagrancy Violations
+43,Sodomy
+44,Intimidation
+45,All Other Larceny
+47,Theft From Building
+49,Burglary/Breaking & Entering
+52,Liquor Law Violations
+53,Disorderly Conduct
+54,Gambling Equipment Violation
+55,Incest
+57,Bribery
+59,"Human Trafficking, Commercial Sex Acts"
+60,"Human Trafficking, Involuntary Servitude"
+63,Identity Theft
+64,Hacking/Computer Invasion
+62,Animal Cruelty
+65,Failure to Appear
+66,Federal Resource Violations
+67,Perjury
+69,Treason
+70,Espionage
+46,Impersonation
+51,Simple Assault
+56,Fondling
+61,Purchasing Prostitution
+68,Money Laundering
+36,Rape
+50,Theft From Coin-Operated Machine or Device
+10,Driving Under the Influence
+48,All Other Offenses
