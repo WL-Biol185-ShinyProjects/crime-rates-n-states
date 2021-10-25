@@ -53,7 +53,3 @@ aggregate_edited <- aggregate_edited %>%
          age         = AGE_NUM)
 
 View(aggregate_edited)
-
-
-library(dplyr)
-xtabs(~ state_name + sex, data = aggregate_edited)
