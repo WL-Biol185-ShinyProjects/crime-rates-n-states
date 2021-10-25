@@ -1,5 +1,31 @@
 library(ggplot2)
 library(maps)
+library(dplyr)
+
+#####
+filenames <- list.files(pattern = ".csv")
+readStateTables <- function(file){
+  d <-read.csv(file)
+  d$file <- file
+  d
+}
+
+tables    <- lapply(filenames, readStateTables)
+aggregate <- do.call(rbind, tables)
+########
+
+listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'ID', 'IL', 
+                  'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 
+                  'NB', 'NC', 'ND', 'NH', 'NM', 'NV', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 
+                  'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY')
+
+totalcasebystate <- function(file1){
+  b <- length(aggregate_edited$state_name == file1)
+  b$state <- file1
+  b
+}
+
+tables1 <- lapply(listofstates, totalcasebystate)
 
 ggplot(data   = aggregate_edited, 
        mapping = aes(x     = long, 
@@ -19,10 +45,7 @@ ggplot(data   = aggregate_edited,
   labs(fill = "Percent") + 
   
   scale_fill_gradient(low = "white", 
-                      high = "#CB454A") + 
-  
-  labs(title = "Offense Type") + 
-  
-  labs(fill= "Percentage")
+                      high = "#CB454A")
+
 
   
