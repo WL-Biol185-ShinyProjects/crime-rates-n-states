@@ -22,10 +22,13 @@ listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'I
 totalcasebystate <- function(file1){
   b <- length(aggregate_edited$state_name == file1)
   b$state <- file1
+  b$totalcase <- b
   b
 }
 
-tables1 <- lapply(listofstates, totalcasebystate)
+table1 <- lapply(listofstates, totalcasebystate)
+newtable <- do.call(rbind, table1)
+View(newtable)
 
 ggplot(data   = aggregate_edited, 
        mapping = aes(x     = long, 
