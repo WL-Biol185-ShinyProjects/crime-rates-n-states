@@ -1,4 +1,8 @@
 library(shiny)
+library(ggplot2)
+library(maps)
+library(dplyr)
+library(tidyverse)
 
 # globalMean <- read.delim(".../global-mean.txt", header = TRUE)
 
@@ -27,6 +31,7 @@ function(input, output) {
   
   output$summary <- renderText({
     summary(x())
+
     
     
   })
