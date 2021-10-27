@@ -5,7 +5,8 @@ library(tidyverse)
 
 percentagetable <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
-  summarise(crimes = n())
+  summarise(crimes = n()) %>%
+  as.data.frame()
 
 ## need to debug this
 listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'ID', 'IL', 
