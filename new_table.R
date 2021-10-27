@@ -24,7 +24,10 @@ aggregate$race <- race[as.character(aggregate$RACE_ID)]
 
 
 #replacing offender type data
-offense_type_id_key    <- read.csv(NIBRS_OFFENSE_TYPE_real.csv)
+offense_type_id_key  <- read.csv('offense_type_comma_sep_values/NIBRS_OFFENSE_TYPE_real.csv')
+
+View(offense_type_id_key)
+
 offense_type           <- offense_type_id_key$OFFENSE_NAME
 names(offense_type)    <- offense_type_id_key$OFFENSE_TYPE_ID
 aggregate$offense_type <- offense_type[as.character(aggregate$OFFENSE_TYPE_ID)]
