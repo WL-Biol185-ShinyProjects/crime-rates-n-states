@@ -3,11 +3,11 @@ library(maps)
 library(dplyr)
 library(tidyverse)
 
+filter(aggregate_edited, offense_type == "Shoplifting")
 table <- aggregate_edited %>%
-  group_by(state_name, offense_type$Shoplifting) %>%
-  summarise(shoplifting = n(), filter())
+  group_by(state_name, offense_type) %>%
+  summarise(shoplifting = n()) 
  
-
 View(table)
 
 
