@@ -31,6 +31,53 @@ ui: add offense types, select state
 server: add offense type selection options, select state
 
 ```{r}
+#ui
+# Histogram: Age vs. Offense
+
+fluidPage(
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("OffenseType",
+                  label = "Choose a Offense Type",
+                  choices = c("White", "Black"))
+    ),
+    ),
+    mainPanel(
+      plotOutput("hist"),
+      textOutput("summary")
+             )
+        )
+```
+
+```{r}
+#server
+# Histogram: Age vs. Offense
+
+function(input, output) {
+  
+  x <- reactive({
+    if(
+      input$OffenseType == "White") {
+      aggregate_edited$race
+    } else {
+      aggregate_edited$sex
+    }
+  })
+  
+  output$hist <- renderPlot({
+    
+    hist(x(),)
+  })
+  
+  output$summary <- renderText({
+    summary(x())
+    
+  })
+}
+
+```
+
+```{r}
 ggplot(aggregate_edited, aes(x= age)) + 
 geom_histogram(color = "darkblue", 
                fill= "lightblue") + 
@@ -51,8 +98,6 @@ theme(legend.position = "top"))
 
 # Time & Crime
 
-
-# Correlation with other demographic factors? (religion, political leaning etc.)
 
 
 
