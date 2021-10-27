@@ -8,6 +8,18 @@ percentagetable <- aggregate_edited %>%
   summarise(crimes = n()) %>%
   as.data.frame()
 
+percentagetable <- aggregate_edited %>%
+  group_by(state_name, offense_type) %>%
+  summarise(crimes = n()) %>%
+  as.data.frame()
+
+table <- aggregate_edited %>%
+  group_by(state_name, offense_type == "Shoplifting") %>%
+  summarise(crimes = n()) %>%
+  as.data.frame()
+
+View(table)
+
 ## need to debug this
 listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'ID', 'IL', 
                   'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 
