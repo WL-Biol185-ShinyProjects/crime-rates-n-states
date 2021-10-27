@@ -5,7 +5,8 @@ library(tidyverse)
 
 table <- aggregate_edited %>%
   group_by(state_name, offense_type$Shoplifting) %>%
-  summarise(shoplifting = n()) 
+  summarise(shoplifting = n(), filter())
+ 
 
 View(table)
 
