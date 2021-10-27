@@ -3,17 +3,26 @@ library(maps)
 library(dplyr)
 library(tidyverse)
 
-aggregate_edited %>%
+percentagetable <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
-  summarise(crime = n()) %>%
-  summarise(percentcrime = n) %>%
+  summarise(crimes = n())
+
+## need to debug this
+listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'ID', 'IL', 
+                  'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 
+                  'NB', 'NC', 'ND', 'NH', 'NM', 'NV', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 
+                  'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY')
+
+percentagetable$totalbystate <- aggregate_edited %>%
+  group_by(state_name) %>%
+  summarise(totalcrimes = n()) %>%
   View()
+  
+  
+
+View(percentagetable)
 
 
-#listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'ID', 'IL', 
-#                  'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 
-#                  'NB', 'NC', 'ND', 'NH', 'NM', 'NV', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 
-#                  'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY')
 
 
 ggplot(data   = aggregate_edited, 
