@@ -4,12 +4,11 @@ library(dplyr)
 library(tidyverse)
 
 table <- aggregate_edited %>%
-  group_by(state_name, offense_type == "Shoplifting") %>%
+  group_by(state_name, offense_type) %>%
   summarise(shoplifting = n()) %>%
-  filter(aggregate_edited, drop = FALSE)
+  filter(offense_type == "Shoplifting")
  
 View(table)
-
 
 totalcrimebystate <- aggregate_edited %>%
   group_by(state_name) %>%
