@@ -8,13 +8,13 @@ table <- aggregate_edited %>%
   summarise(shoplifting = n()) %>%
   filter(offense_type == "Shoplifting")
  
-View(table)
-
 totalcrimebystate <- aggregate_edited %>%
   group_by(state_name) %>%
   summarise(totalcrimes = n())
-  
-View(totalcrimebystate)
+
+newtable <- left_join(table, totalcrimebystate)
+newtable$percentofshoplifting <- newtable$shoplifting / newtable$totalcrimes
+View(newtable)
 
 ## need to debug this
 listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'ID', 'IL', 
@@ -22,12 +22,11 @@ listofstates <- c('AL', 'AR', 'AZ', 'CO', 'CT', 'DC', 'DE', 'GA', 'HI', 'IA', 'I
                   'NB', 'NC', 'ND', 'NH', 'NM', 'NV', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 
                   'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY')
 
-
-ggplot(data   = aggregate_edited, 
-       mapping = aes(x     = long, 
-                     y     = lat, 
-                     group = group, 
-                     fill  = aggregate_edited$offense_type)) + 
+ggplot(data   = newtable, 
+       mapping = aes(x     = 'long', 
+                     y     = 'lat', 
+                     group = 'group', 
+                     fill  = newtable$percentofshoplifting)) + 
   
   geom_polygon(color = "gray90",
              size = 0.1) + 
