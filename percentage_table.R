@@ -4,7 +4,6 @@ library(tidyverse)
 summary_df <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
   summarise(case = n()) 
-View(summary_df)
 
 shoplifting_case <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
