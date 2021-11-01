@@ -1,5 +1,5 @@
 ---
-title: "toto_LJ"
+title: "todo_LJ"
 author: "Leah Jackson"
 date: "10/20/2021"
 output: word_document
@@ -49,22 +49,23 @@ ggplot(data=aggregate_edited, aes(x=offense_type, fill=sex)) +
 ```
 ```{r}
 ggplot(data=aggregate_edited, aes(x=sex, fill=offense_type)) +
-  geom_bar() +
-  theme(legend.position = "right")
+  geom_bar()+
+  theme(legend.position = "None")
 ```
 
 ## Bar: Offense Type and State
 ```{r}
 ggplot(data=aggregate_edited, aes(x=state_name, fill=offense_type)) +
   geom_bar() +
-  theme(legend.position = "right")
+  theme(legend.position = "None")
+#sort from highest to lowest
 ```
 
 ## Bar: Offense Type and Race
 ```{r}
 ggplot(data=aggregate_edited, aes(x=race, fill=offense_type)) +
   geom_bar() +
-  theme(legend.position = "right")
+  theme(legend.position = "None")
 ```
 
 
@@ -82,4 +83,13 @@ geom_vline(xintercept = mean(aggregate_edited$age),
 
 
 ## Time & Crime: Choose An Offense type and See Its prevelence by time
+
+```{r}
+aggregate_edited %>%
+  mutate(REGISTRATION_TIME = hms(REGISTRATION_TIME)) %>% 
+  ggplot(aes(x = REGISTRATION_TIME)) +
+  geom_histogram(bins = 24) +
+  scale_x_time()
+```
+
 
