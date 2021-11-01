@@ -1,25 +1,20 @@
 library(shiny)
-ui <- fluidPage(
-  
-  titlePanel("Tabsets"),
-  
-  sidebarLayout(
-    
-    sidebarPanel(
-      sliderInput("number", label = h3("Slider Range"), min = 0, 
-                  max = 100, value = c(40, 60)),
-      
-      selectInput("distribution",
-                  label = "Choose a distribution",
-                  choices = c("normal", "uniform"))
-    ),
-    
-    mainPanel(
-      tabsetPanel(
-        tabPanel("Plot", plotOutput("hist")), 
-        tabPanel("Summary", verbatimTextOutput("summary")), 
-        tabPanel("Table", tableOutput("table"))
-      )
-    )
-  )
-)
+ui <- navbarPage("Crime Rates by States",
+                 tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
+                          ),
+                 
+                 tabPanel("Map" # maps 
+                   ),
+                    
+                 tabPanel( "Demographics" # demographic breakdown data
+                   ),
+                 
+                 navbarMenu("More",
+                            tabPanel("About the Creators"),
+                            tabPanel("Citations"))
+                 )
+                        
+
+
+
+
