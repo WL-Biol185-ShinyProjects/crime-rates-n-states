@@ -1,13 +1,25 @@
 library(tidyverse)
 library(leaflet)
 library(rgdal)
-state_names<- read_csv("states.csv")
-states_map  <- rgdal::readOGR("states_geo.json")
+state_map  <- rgdal::readOGR("states.geo.json")
 
 #merge data frame into states
-states_map@data <- states_map %>%
-  left_join(state_names) %>%
-  left_join(final_table)
+state_map@data <-  left_join(state_map, final_table)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #usaStates <- usaStates %>%
 #select(GEO_ID, STATE, NAME, LSAD, CENSUSAREA)
