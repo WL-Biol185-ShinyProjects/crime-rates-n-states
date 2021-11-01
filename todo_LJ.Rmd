@@ -11,71 +11,64 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r import library}
 library(ggplot2)
-```
-
-
-# Bar: Offense vs. Indentities
-ui: add offense types
-server: add offense type selection options
-
-```{r}
-ggplot(aggregate_edited, 
-       aes(race, offense_type) + 
-geom_bar() + 
-theme(legend.position = "top"))
-```
-
-
-# Histogram: Age of offenses by state
-ui: add offense types, select state
-server: add offense type selection options, select state
-
-```{r}
-#ui
-# Histogram: Age vs. Offense
-
-fluidPage(
-  sidebarLayout(
-    sidebarPanel(
-      selectInput("OffenseType",
-                  label = "Choose a Offense Type",
-                  choices = c("White", "Black"))
-    ),
-    ),
-    mainPanel(
-      plotOutput("hist"),
-      textOutput("summary")
-             )
-        )
+library(dplyr)
 ```
 
 ```{r}
-#server
-# Histogram: Age vs. Offense
+state_and_offense <- aggregate_edited %>%
+  group_by(state_name, offense_type) %>%
+  summarise(crimes = n())
+View (table)
+```
 
-function(input, output) {
-  
-  x <- reactive({
-    if(
-      input$OffenseType == "White") {
-      aggregate_edited$race
-    } else {
-      aggregate_edited$sex
-    }
-  })
-  
-  output$hist <- renderPlot({
-    
-    hist(x(),)
-  })
-  
-  output$summary <- renderText({
-    summary(x())
-    
-  })
-}
+```{r}
+count(sex, sta)
+```
+
+```{r}
+
+off_shop <- filter(aggregate_edited, offense_type == "Shoplifting")
+off_drug <- filter(aggregate_edited, offense_type == "Drug/Narcotic Violations")
+off_assault <- filter(aggregate_edited, offense_type == "Simple Assault")
+
+state_and_offense <- aggregate_edited %>%
+  group_by(state_name, off_shop) %>%
+  summarise(crimes = n())
+View (state_and_offense)
+
 
 ```
+
+# Bar: Offense Type by Sex, State, and Race
+
+## Bar: Offense Type and Sex
+```{r}
+ggplot(data=aggregate_edited, aes(x=offense_type, fill=sex)) +
+  geom_bar() +
+  theme(legend.position = "right")
+```
+```{r}
+ggplot(data=aggregate_edited, aes(x=sex, fill=offense_type)) +
+  geom_bar() +
+  theme(legend.position = "right")
+```
+
+## Bar: Offense Type and State
+```{r}
+ggplot(data=aggregate_edited, aes(x=state_name, fill=offense_type)) +
+  geom_bar() +
+  theme(legend.position = "right")
+```
+
+## Bar: Offense Type and Race
+```{r}
+ggplot(data=aggregate_edited, aes(x=race, fill=offense_type)) +
+  geom_bar() +
+  theme(legend.position = "right")
+```
+
+
+## Offense Type by Age
 
 ```{r}
 ggplot(aggregate_edited, aes(x= age)) + 
@@ -87,20 +80,6 @@ geom_vline(xintercept = mean(aggregate_edited$age),
            color = "black")
 ```
 
-# Bar for State and Offense Type
 
-```{r}
-ggplot(aggregate_edited, 
-       aes(state_name, offense_type) + 
-geom_bar() + 
-theme(legend.position = "top"))
-```
+## Time & Crime: Choose An Offense type and See Its prevelence by time
 
-# Time & Crime
-
-
-
-
-# Are crimes rates alleviated in areas with social support structures?
-
-# Do crime rates increase in areas with other issues? (ex. Add socex data for food environmental (food desert) index, high poverty (median household income, high homelessness), population density (if we can get county crime data), average education level?
