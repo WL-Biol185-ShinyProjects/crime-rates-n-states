@@ -21,8 +21,7 @@ state_map@data <-  left_join(state_map@data, final_table, by = c("NAME" = "State
 
 
 
-#usaStates <- usaStates %>%
-#select(GEO_ID, STATE, NAME, LSAD, CENSUSAREA)
+
 
 pal <- colorNumeric("YlOrRd", NULL)
 map<-
