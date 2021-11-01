@@ -4,7 +4,7 @@ library(rgdal)
 state_map  <- rgdal::readOGR("states.geo.json")
 
 #merge data frame into states
-state_map@data <-  left_join(state_map, final_table)
+state_map@data <-  left_join(state_map@data, final_table, by = c("NAME" = "State"))
 
 
 
