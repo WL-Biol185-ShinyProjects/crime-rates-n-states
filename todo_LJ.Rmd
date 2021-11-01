@@ -14,31 +14,6 @@ library(ggplot2)
 library(dplyr)
 ```
 
-```{r}
-state_and_offense <- aggregate_edited %>%
-  group_by(state_name, offense_type) %>%
-  summarise(crimes = n())
-View (table)
-```
-
-```{r}
-count(sex, sta)
-```
-
-```{r}
-
-off_shop <- filter(aggregate_edited, offense_type == "Shoplifting")
-off_drug <- filter(aggregate_edited, offense_type == "Drug/Narcotic Violations")
-off_assault <- filter(aggregate_edited, offense_type == "Simple Assault")
-
-state_and_offense <- aggregate_edited %>%
-  group_by(state_name, off_shop) %>%
-  summarise(crimes = n())
-View (state_and_offense)
-
-
-```
-
 # Bar: Offense Type by Sex, State, and Race
 
 ## Bar: Offense Type and Sex
