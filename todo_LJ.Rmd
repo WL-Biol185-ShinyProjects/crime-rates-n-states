@@ -14,48 +14,23 @@ library(ggplot2)
 library(dplyr)
 ```
 
-```{r}
-state_and_offense <- aggregate_edited %>%
-  group_by(state_name, offense_type) %>%
-  summarise(crimes = n())
-View (table)
-```
-
-```{r}
-count(sex, sta)
-```
-
-```{r}
-
-off_shop <- filter(aggregate_edited, offense_type == "Shoplifting")
-off_drug <- filter(aggregate_edited, offense_type == "Drug/Narcotic Violations")
-off_assault <- filter(aggregate_edited, offense_type == "Simple Assault")
-
-state_and_offense <- aggregate_edited %>%
-  group_by(state_name, off_shop) %>%
-  summarise(crimes = n())
-View (state_and_offense)
-
-
-```
-
 # Bar: Offense Type by Sex, State, and Race
 
 ## Bar: Offense Type and Sex
+
 ```{r}
-ggplot(data=aggregate_edited, aes(x=offense_type, fill=sex)) +
-  geom_bar() +
-  theme(legend.position = "right")
-```
-```{r}
-ggplot(data=aggregate_edited, aes(x=sex, fill=offense_type)) +
+ggplot(data     = aggregate_edited, 
+       aes(x    = sex, 
+           fill = offense_type)) +
   geom_bar()+
   theme(legend.position = "None")
 ```
 
 ## Bar: Offense Type and State
 ```{r}
-ggplot(data=aggregate_edited, aes(x=state_name, fill=offense_type)) +
+ggplot(data     = aggregate_edited,
+       aes(x    = state_name, 
+           fill = offense_type)) +
   geom_bar() +
   theme(legend.position = "None")
 #sort from highest to lowest
@@ -63,22 +38,27 @@ ggplot(data=aggregate_edited, aes(x=state_name, fill=offense_type)) +
 
 ## Bar: Offense Type and Race
 ```{r}
-ggplot(data=aggregate_edited, aes(x=race, fill=offense_type)) +
+ggplot(data     = aggregate_edited, 
+       aes(x    = race, 
+           fill = offense_type)) +
   geom_bar() +
   theme(legend.position = "None")
 ```
 
 
+#Other Plots
+
 ## Offense Type by Age
 
 ```{r}
-ggplot(aggregate_edited, aes(x= age)) + 
-geom_histogram(color = "darkblue", 
-               fill= "lightblue") + 
+ggplot(aggregate_edited, 
+       aes(x          = age)) + 
+geom_histogram(color  = "darkblue", 
+               fill   = "lightblue") + 
 geom_vline(xintercept = mean(aggregate_edited$age), 
-           linetype = "dashed", 
-           size = 2, 
-           color = "black")
+           linetype   = "dashed", 
+           size       = 2, 
+           color      = "black")
 ```
 
 
@@ -86,8 +66,9 @@ geom_vline(xintercept = mean(aggregate_edited$age),
 
 ```{r}
 aggregate_edited %>%
-  mutate(REGISTRATION_TIME = hms(REGISTRATION_TIME)) %>% 
-  ggplot(aes(x = REGISTRATION_TIME)) +
+  mutate(arrest_date) %>% 
+  ggplot(aes(x        = arrest_date, 
+             fill     = offense_type)) +
   geom_histogram(bins = 24) +
   scale_x_time()
 ```

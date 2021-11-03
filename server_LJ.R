@@ -1,8 +1,6 @@
 library(shiny)
 library(ggplot2)
 
-# Bar : Offense by Race or Sex
-
 function(input, output) { 
   x <- reactive({
     if(
@@ -13,20 +11,20 @@ function(input, output) {
     }
   })
   
+  aggregate_edited_filtered <- aggregate_edited %>% 
+    filter (                   aggregate_Edited$offense_type %in% 
+                               input$OffenseType)
   output$bar <- renderPlot({
     
-    ggplot(aggregate_edited, 
-           aes_string(input$RaceSex, 'OffenseType') + 
+    ggplot(data                  = aggregate_edited_filtered,
+           aes_string( x         = input$RaceSex, 
+                       fill      = 'OffenseType') + 
            geom_bar() + 
-           theme(legend.position = "top")
+           theme(legend.position = "bottom")
           )
                           })
   
     output$summary <- renderText({
       summary(x())
-      
-                          })
-                       }
-
-
-
+                                })
+                        }
