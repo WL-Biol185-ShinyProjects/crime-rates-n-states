@@ -3,28 +3,10 @@ library(leaflet)
 library(rgdal)
 state_map  <- rgdal::readOGR("states.geo.json")
 
-View(state_map@data)
-
 source("percentage_table.R")
 
 #merge data frame into states
-state_map@data <-  left_join(state_map@data, final_table, by = c("NAME" = "state_name"))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+state_map@data <-  left_join(state_map@data, final_table, by = c("NAME" = "state_full_name"))
 
 
 pal <- colorNumeric("YlOrRd", NULL)
@@ -50,5 +32,4 @@ map<-
             values       = ~(final_table$percent_of_shoplifting), 
             opacity      = 0.8, 
             title        = "Does this work",
-            labFormat    = labelFormat(suffix = "%")) %>%
-  View()
+            labFormat    = labelFormat(suffix = "%")) 
