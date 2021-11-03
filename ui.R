@@ -1,10 +1,24 @@
+library(leaflet)
 library(shiny)
+library(shinydashboard)
+library(ggplot2)
+library(tidyverse)
+library(rgdal)
+library(png)
+library(htmltools)
 ui <- navbarPage("Crime Rates by States",
                  tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
                          ),
                  
-                 tabPanel("Map" # maps 
-                        ),
+                 tabPanel("Map", # maps
+                          fluidRow(
+                            p("Look at a map of crimes in the USA."),
+                            box(width = 14,
+                                leafletOutput("CrimeMap"
+                                             )
+                               )
+                                  )
+                         ),
                     
                  tabPanel("Demographics", # demographic breakdown data
                            fluidPage(
