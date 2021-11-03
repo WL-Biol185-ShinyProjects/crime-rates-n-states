@@ -28,6 +28,3 @@ function(input, output) {
       summary(x())
                                 })
                         }
-
-
-
