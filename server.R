@@ -42,7 +42,7 @@ function(input, output, session) {
   })
   observeEvent(input$leah, {
     output$selected_var <- renderText({ 
-      "Leah is a senior biology major"
+      "Leah is a senior Biology major"
     })
     
   })
