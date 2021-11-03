@@ -1,6 +1,8 @@
 library(dplyr)
 library(tidyverse)
 
+source("new_table.R")
+
 summary_df <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
   summarise(case = n()) 
@@ -33,14 +35,12 @@ total_crime_by_state <- aggregate_edited %>%
   group_by(state_name) %>%
   summarise(total_crimes = n())
 
-table1 <- left_join(shoplifting_case, simple_assult_case)
-table2 <- left_join(table1, drug_case)
-table3 <- left_join(table2, burglary)
-final_table <- left_join(table3, total_crime_by_state)
-final_table$percent_of_shoplifting <- table4$shoplifting / table4$total_crimes
+shoplifting_table <- left_join(shoplifting_case, simple_assult_case)
+drug_table <- left_join(shoplifting_table, drug_case)
+burglary_table <- left_join(drug_table, burglary)
+final_table <- left_join(burglary_table, total_crime_by_state)
+final_table$percent_of_shoplifting <- final_table$shoplifting / final_table$total_crimes
 final_table$percent_of_simple_assult <- final_table$simple_assult / final_table$total_crimes
 final_table$percent_of_drug_and_narcotic_violations <- final_table$drug_and_narcotic_violation / final_table$total_crimes
 final_table$percent_of_burglary <- final_table$burglary / final_table$total_crimes
-
-View(final_table)
 
