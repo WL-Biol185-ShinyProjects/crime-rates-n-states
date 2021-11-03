@@ -28,13 +28,10 @@ aggregate_edited_filtered <- aggregate_edited %>%
   
 # DEMOGRAPHICS creating bar graph
 output$bar <- renderPlot({
-    
   ggplot(data                  = aggregate_edited_filtered,
-         aes_string( x         = input$RaceSex, 
-                     fill      = 'OffenseType') + 
-             geom_bar() + 
-             theme(legend.position = "bottom")
-    )
+         aes_string( x         = input$RaceSexState)) +
+  geom_bar() + 
+  theme(legend.position = "bottom")
   })
   
   output$summary <- renderText({
@@ -42,6 +39,7 @@ output$bar <- renderPlot({
   })
 }
 
+#BIOGRAPHIES 
 function(input, output, session) {
   observeEvent(input$natasha, {
     output$selected_var <- renderText({ 
