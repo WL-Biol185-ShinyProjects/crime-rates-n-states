@@ -110,7 +110,7 @@ ui <- navbarPage("Crime Rates by States",
                                  )),
                                  mainPanel(
                                    plotOutput("bar"),
-                                   textOutput("summary")
+                                   textOutput("summary") # do we need this?
                                  )
                              )
                            )
