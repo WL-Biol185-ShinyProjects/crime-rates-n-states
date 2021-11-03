@@ -3,8 +3,10 @@ library(leaflet)
 library(rgdal)
 state_map  <- rgdal::readOGR("states.geo.json")
 
+source("percentage_table.R")
+
 #merge data frame into states
-state_map@data <-  left_join(state_map@data, final_table, by = c("NAME" = "State"))
+state_map@data <-  left_join(state_map@data, final_table, by = c("NAME" = "state_name"))
 
 
 
@@ -25,7 +27,7 @@ state_map@data <-  left_join(state_map@data, final_table, by = c("NAME" = "State
 
 pal <- colorNumeric("YlOrRd", NULL)
 map<-
-  leaflet(data= statesGEO) %>%
+  leaflet(data= state_map) %>%
   setView(-96, 37.8, 4)%>% 
   addTiles() %>%
   addPolygons(stroke = FALSE, 
