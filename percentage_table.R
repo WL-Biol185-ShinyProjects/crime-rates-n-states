@@ -42,5 +42,5 @@ final_table$percent_of_simple_assult <- final_table$simple_assult / final_table$
 final_table$percent_of_drug_and_narcotic_violations <- final_table$drug_and_narcotic_violation / final_table$total_crimes
 final_table$percent_of_burglary <- final_table$burglary / final_table$total_crimes
 
-View(final_table)
+final_table <- as.data.frame(final_table)
 
