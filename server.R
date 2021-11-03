@@ -43,35 +43,40 @@ function(input, output) {
 }
 
 
+function(input, output) { 
+  x <- reactive({
+    if(
+      input$RaceSexState == "Race") {
+      aggregate_edited$race
+    } else {
+            if(
+              input$RaceSexState == "Sex") {
+              aggregate_edited$sex
+            } else {
+                    aggregate_edited$state_name
+                   }
+           }
+              })
 
-#function(input, output) { 
- # x <- reactive({
-  #  if(
-   #   input$RaceSex == "Race") {
-    #  aggregate_edited$race
-  #  } else {
-   #   aggregate_edited$sex
-  #  }
-#  })
+# DEMOGRAPHICS filter the data by the chosen offense
+aggregate_edited_filtered <- aggregate_edited %>% 
+  filter (                   aggregate_edited$offense_type %in% 
+                             input$OffenseType)
   
- # aggregate_edited_filtered <- aggregate_edited %>% 
-  #  filter (                   aggregate_Edited$offense_type %in% 
-  #                               input$OffenseType)
-  #output$bar <- renderPlot({
-    
-   # ggplot(data                  = aggregate_edited_filtered,
-    #       aes_string( x         = input$RaceSex, 
-     #                  fill      = 'OffenseType') + 
-      #       geom_bar() + 
-       #      theme(legend.position = "bottom")
-  #  )
-  #})
-  
- # output$summary <- renderText({
-  #  summary(x())
-  #})
-#}
+# DEMOGRAPHICS creating bar graph
+output$bar <- renderPlot({
+  ggplot(data                  = aggregate_edited_filtered,
+         aes_string( x         = input$RaceSexState)) +
+  geom_bar() + 
+  theme(legend.position = "bottom")
+                        })
 
+output$summary <- renderText({
+ summary(x())
+})
+}
+
+#BIOGRAPHIES 
 function(input, output, session) {
   observeEvent(input$natasha, {
     output$selected_var <- renderText({ 
@@ -81,7 +86,7 @@ function(input, output, session) {
   })
   observeEvent(input$leah, {
     output$selected_var <- renderText({ 
-      "Leah is a senior biology major"
+      "Leah is a senior Biology major"
     })
     
   })
