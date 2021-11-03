@@ -1,35 +1,36 @@
 library(shiny)
 library(ggplot2)
 
+# DEMOGRAPHICS Race, Sex, or State options
 function(input, output) { 
   x <- reactive({
     if(
-      input$RaceSex == "Race") {
+      input$RaceSexState == "Race") {
       aggregate_edited$race
     } else {
-            if(
-              input$RaceSex == "Race") {
-        aggregate_edited$race
-      } else {
+      if(
+        input$RaceSexState == "Sex") {
         aggregate_edited$sex
+      } else {
+        aggregate_edited$state_name
       }
     }
   })
   
+  # DEMOGRAPHICS filter the data by the chosen offense
   aggregate_edited_filtered <- aggregate_edited %>% 
-    filter (                   aggregate_Edited$offense_type %in% 
-                               input$OffenseType)
-  output$bar <- renderPlot({
-    
-    ggplot(data                  = aggregate_edited_filtered,
-           aes_string( x         = input$RaceSex, 
-                       fill      = 'OffenseType') + 
-           geom_bar() + 
-           theme(legend.position = "bottom")
-          )
-                          })
+    filter (                   aggregate_edited$offense_type %in% 
+                                 input$OffenseType)
   
-    output$summary <- renderText({
-      summary(x())
-                                })
-                        }
+  # DEMOGRAPHICS creating bar graph
+  output$bar <- renderPlot({
+    ggplot(data                  = aggregate_edited_filtered,
+           aes_string( x         = input$RaceSexState)) +
+      geom_bar() + 
+      theme(legend.position = "bottom")
+  })
+  
+  output$summary <- renderText({
+    summary(x())
+  })
+}
