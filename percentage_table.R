@@ -13,9 +13,9 @@ shoplifting_case <- aggregate_edited %>%
   filter(offense_type == "Shoplifting")
 shoplifting_case$offense_type <- NULL
 
-simple_assult_case <- aggregate_edited %>%
+simple_assault_case <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
-  summarise(simple_assult = n()) %>%
+  summarise(simple_assault = n()) %>%
   filter(offense_type == "Simple Assault")
 simple_assult_case$offense_type <- NULL
 
@@ -43,4 +43,14 @@ final_table$percent_of_shoplifting <- final_table$shoplifting / final_table$tota
 final_table$percent_of_simple_assult <- final_table$simple_assult / final_table$total_crimes
 final_table$percent_of_drug_and_narcotic_violations <- final_table$drug_and_narcotic_violation / final_table$total_crimes
 final_table$percent_of_burglary <- final_table$burglary / final_table$total_crimes
+
+state_converter <- read.csv("states_converter.csv")
+View(state_converter)
+state_full_name <- state_converter$State
+names(state_full_name) <- state_converter$Abbreviation
+final_table$state_full_name <- state_full_name[as.character(final_table$state_name)]
+
+
+
+
 
