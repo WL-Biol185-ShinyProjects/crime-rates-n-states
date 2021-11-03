@@ -32,7 +32,7 @@ output$bar <- renderPlot({
          aes_string( x         = input$RaceSexState)) +
   geom_bar() + 
   theme(legend.position = "bottom")
-  })
+                        })
   
   output$summary <- renderText({
     summary(x())
