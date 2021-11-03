@@ -3,6 +3,8 @@ library(leaflet)
 library(rgdal)
 state_map  <- rgdal::readOGR("states.geo.json")
 
+View(state_map@data)
+
 source("percentage_table.R")
 
 #merge data frame into states
