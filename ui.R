@@ -1,15 +1,15 @@
 library(shiny)
 ui <- navbarPage("Crime Rates by States",
                  tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
-                          ),
+                         ),
                  
                  tabPanel("Map" # maps 
-                   ),
+                        ),
                     
-                 tabPanel( "Demographics", # demographic breakdown data
+                 tabPanel("Demographics", # demographic breakdown data
                            fluidPage(
                              sidebarLayout(
-                               sidebarPanel( #Tash version
+                               sidebarPanel(
                                  selectizeInput("OffenseType", 
                                                 label = "Choose a Offense Type",
                                                 multiple = TRUE,
@@ -99,7 +99,7 @@ ui <- navbarPage("Crime Rates by States",
                                                              "Theft From Coin-Operated Machine or Device" = 'Theft From Coin-Operated Machine or Device',
                                                              "Driving Under the Influence"               = 'Driving Under the Influence',
                                                              "All Other Offenses"                        = 'All Other Offenses')
-                                 ),
+                                            ),
                                  
                                  selectInput("RaceSexState",
                                              label    = "Choose a Sex, Race, or State",
@@ -107,16 +107,15 @@ ui <- navbarPage("Crime Rates by States",
                                              choices  = c("Race"  = 'race', 
                                                           "Sex"   = 'sex', 
                                                           "State" = 'state_name')
-                                 ),
+                                 )),
                                  mainPanel(
                                    plotOutput("bar"),
                                    textOutput("summary")
                                  )
-                               )
                              )
                            )
                        ),
-                 
+              
                  navbarMenu("More",
                             tabPanel("About the Creators",
                                   fluidPage(
@@ -129,9 +128,12 @@ ui <- navbarPage("Crime Rates by States",
                                                        actionButton("hieu",    label = "Hieu Nguyen"))
                                                             ),
                                          mainPanel(    textOutput("selected_var")
-                                                )
-                                       ))),
-                            tabPanel("Citations"))
+                                                  )
+                                                    )
+                                           ) 
+                                     ),
+                            tabPanel("Citations")
+                          )
                  )
 
                         
