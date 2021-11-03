@@ -7,7 +7,12 @@ function(input, output) {
       input$RaceSex == "Race") {
       aggregate_edited$race
     } else {
-      aggregate_edited$sex
+            if(
+              input$RaceSex == "Race") {
+        aggregate_edited$race
+      } else {
+        aggregate_edited$sex
+      }
     }
   })
   

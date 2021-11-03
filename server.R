@@ -5,24 +5,33 @@ library(ggplot2)
 #library(tidyverse)
 library(leaflet)
 
+# DEMOGRAPHICS Race, Sex, or State options
 function(input, output) { 
   x <- reactive({
     if(
-      input$RaceSex == "Race") {
+      input$RaceSexState == "Race") {
       aggregate_edited$race
     } else {
-      aggregate_edited$sex
-    }
-  })
+            if(
+              input$RaceSexState == "Sex") {
+              aggregate_edited$sex
+            } else {
+                    aggregate_edited$state_name
+                   }
+           }
+              })
+
+# DEMOGRAPHICS filter the data by the chosen offense
+aggregate_edited_filtered <- aggregate_edited %>% 
+  filter (                   aggregate_edited$offense_type %in% 
+                             input$OffenseType)
   
-  aggregate_edited_filtered <- aggregate_edited %>% 
-    filter (                   aggregate_Edited$offense_type %in% 
-                                 input$OffenseType)
-  output$bar <- renderPlot({
+# DEMOGRAPHICS creating bar graph
+output$bar <- renderPlot({
     
-    ggplot(data                  = aggregate_edited_filtered,
-           aes_string( x         = input$RaceSex, 
-                       fill      = 'OffenseType') + 
+  ggplot(data                  = aggregate_edited_filtered,
+         aes_string( x         = input$RaceSex, 
+                     fill      = 'OffenseType') + 
              geom_bar() + 
              theme(legend.position = "bottom")
     )
