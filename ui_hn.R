@@ -9,12 +9,21 @@ library(htmltools)
 
 
 #first tab
-tabItem(tabName= "leaflet",
+tabItem(tabName= "CrimeMap",
         fluidRow(
-          
-          p("View how APR is distributed regionally:"),
+          p("Look at a map of crimes in the USA."),
           box(width = 14,
-              leafletOutput("aprMap")
+              leafletOutput("CrimeMap")
           )
         )
+)
+
+tabPanel("Map", 
+         fluidRow(
+           p("Look at a map of crimes in the USA."),
+           box(width = 14,
+               leafletOutput("CrimeMap"
+               )
+           )
+         )
 )
