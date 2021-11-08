@@ -5,7 +5,7 @@ library(ggplot2)
 library(tidyverse)
 library(rgdal)
 library(png)
-library(htmltools)
+
 ui <- navbarPage("Crime Rates by States",
                  tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
                          ),
