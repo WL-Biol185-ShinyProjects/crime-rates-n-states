@@ -118,13 +118,10 @@ ui <- navbarPage("Crime Rates by States",
                                                           "Sex"   = 'sex', 
                                                           "State" = 'state_name')
                                  )),
-                                 mainPanel(
-                                   plotOutput("bar"),
-                                   textOutput("summary") ########################### do we need this?
+                                   plotOutput("demographic_bar"),
                                  )
                              )
-                           )
-                       ),
+                           ),
               
                  navbarMenu("More",
                             tabPanel("About the Creators",
