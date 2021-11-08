@@ -6,8 +6,8 @@ library(tidyverse)
 library(leaflet)
 
 state_map  <- rgdal::readOGR("states.geo.json")
-source("percentage_table.R")
-source("individual_offense_table.R")
+summary_table <- read.csv("summary_table_folder/summary_table.csv")
+aggregate_edited <- read.csv("aggregate_edited_folder/aggregate_edited.csv")
 
 function(input, output) {
   output$CrimeMap <- renderLeaflet({
