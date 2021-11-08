@@ -50,3 +50,6 @@ aggregate_edited <- aggregate_edited %>%
   rename(year        = DATA_YEAR,
          arrest_date = ARREST_DATE,
          age         = AGE_NUM)
+
+write.csv(aggregate_edited,"aggregate_edited.csv", row.names = TRUE)
+
