@@ -1,7 +1,7 @@
 library(dplyr)
 library(tidyverse)
 
-source("new_table.R")
+source("individual_offense_table.R")
 
 summary_df <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
