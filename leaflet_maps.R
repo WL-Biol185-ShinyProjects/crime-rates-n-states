@@ -1,8 +1,8 @@
 library(tidyverse)
 library(leaflet)
 library(rgdal)
-state_map  <- rgdal::readOGR("states.geo.json")
 
+state_map  <- rgdal::readOGR("states.geo.json")
 source("percentage_table.R")
 
 #merge data frame into states
