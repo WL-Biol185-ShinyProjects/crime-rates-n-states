@@ -24,22 +24,22 @@ function(input, output) {
       addTiles() %>%
       addPolygons(stroke = FALSE,
                   smoothFactor     = 0.3,
-                  fillOpacity      = 0.7,
+                  fillOpacity      = 0.6,
                   opacity          = 1,
                   dashArray        = "3",
                   weight           = 2,
                   color            = "white",
-                  fillColor        = ~pal(summary_table$percent_of_shoplifting),
-                  label            = ~paste0(NAME, ": ", formatC(summary_table$percent_of_shoplifting)),
+                  fillColor        = ~pal(state_map$percent_of_shoplifting),
+                  label            = ~paste0(NAME, ": ", formatC(state_map$percent_of_shoplifting)),
                   highlightOptions = highlightOptions(color = "white",
                                                       fillOpacity = 2,
                                                       bringToFront = TRUE
                   )) %>%
       addLegend("bottomright",
                 pal          = pal,
-                values       = ~(summary_table$percent_of_shoplifting),
+                values       = ~(state_map$percent_of_shoplifting),
                 opacity      = 0.8,
-                title        = "Does this work",
+                title        = "Shoplifting Percentage",
                 labFormat    = labelFormat(suffix = "%"))
   })
     
