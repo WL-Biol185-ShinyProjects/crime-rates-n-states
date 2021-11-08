@@ -1,11 +1,12 @@
 library(leaflet)
 library(shiny)
 library(shinydashboard)
-library(ggplot2)
+library(ggplot2) ########################### I don't think we need these for the ui.R, seems like server stuff?
 library(tidyverse)
 library(rgdal)
 library(png)
-library(htmltools)
+library(htmltools) 
+
 ui <- navbarPage("Crime Rates by States",
                  tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
                          ),
@@ -124,7 +125,7 @@ ui <- navbarPage("Crime Rates by States",
                                  )),
                                  mainPanel(
                                    plotOutput("bar"),
-                                   textOutput("summary") # do we need this?
+                                   textOutput("summary") ########################### do we need this?
                                  )
                              )
                            )
