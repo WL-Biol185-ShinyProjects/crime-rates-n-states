@@ -5,7 +5,6 @@ library(ggplot2) ########################### I don't think we need these for the
 library(tidyverse)
 library(rgdal)
 library(png)
-library(htmltools) 
 
 ui <- navbarPage("Crime Rates by States",
                  tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
