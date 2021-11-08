@@ -39,10 +39,10 @@ shoplifting_table <- left_join(shoplifting_case, simple_assault_case)
 drug_table <- left_join(shoplifting_table, drug_case)
 burglary_table <- left_join(drug_table, burglary)
 summary_table <- left_join(burglary_table, total_crime_by_state)
-summary_table$percent_of_shoplifting <- summary_table$shoplifting / summary_table$total_crimes
-summary_table$percent_of_simple_assault <- summary_table$simple_assault / summary_table$total_crimes
-summary_table$percent_of_drug_and_narcotic_violations <- summary_table$drug_and_narcotic_violation / summary_table$total_crimes
-summary_table$percent_of_burglary <- summary_table$burglary / summary_table$total_crimes
+summary_table$percent_of_shoplifting <- summary_table$shoplifting *100 / summary_table$total_crimes
+summary_table$percent_of_simple_assault <- summary_table$simple_assault *100 / summary_table$total_crimes
+summary_table$percent_of_drug_and_narcotic_violations <- summary_table$drug_and_narcotic_violation *100 / summary_table$total_crimes
+summary_table$percent_of_burglary <- summary_table$burglary *100 / summary_table$total_crimes
 
 state_converter <- read.csv("states_converter/states_converter.csv")
 state_full_name <- state_converter$State
