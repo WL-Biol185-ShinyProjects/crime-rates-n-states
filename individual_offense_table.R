@@ -7,7 +7,6 @@ readStateTables <- function(file){
 
 tables    <- lapply(filenames, readStateTables)
 aggregate <- do.call(rbind, tables)
-aggregate
 
 # added a column with state names
 aggregate$state_name <- substr(aggregate$file, 16, 17)
@@ -44,7 +43,6 @@ aggregate$resident <- resident[(aggregate$RESIDENT_CODE)]
 #deleting more useless columns
 library(dplyr)
 aggregate_edited <- select(aggregate, -2, -3, -5, -6, -7, -8, -10, -11, -12, -13, -14)
-
 
 # change column names
 library(dplyr)

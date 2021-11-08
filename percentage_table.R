@@ -48,5 +48,3 @@ state_converter <- read.csv("states_converter/states_converter.csv")
 state_full_name <- state_converter$State
 names(state_full_name) <- state_converter$Abbreviation
 summary_table$state_full_name <- state_full_name[as.character(summary_table$state_name)]
-
-View(summary_table)
