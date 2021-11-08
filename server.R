@@ -12,7 +12,7 @@ function(input, output) {
   output$CrimeMap <- renderLeaflet({
 
     #merge data frame into states
-    state_map@data <-  left_join(state_map@data, final_table, by = c("NAME" = "state_full_name"))
+    state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
 
 
     pal <- colorNumeric("YlOrRd", NULL)
@@ -27,15 +27,15 @@ function(input, output) {
                   dashArray        = "3",
                   weight           = 2,
                   color            = "white",
-                  fillColor        = ~pal(final_table$percent_of_shoplifting),
-                  label            = ~paste0(NAME, ": ", formatC(final_table$percent_of_shoplifting)),
+                  fillColor        = ~pal(summary_table$percent_of_shoplifting),
+                  label            = ~paste0(NAME, ": ", formatC(summary_table$percent_of_shoplifting)),
                   highlightOptions = highlightOptions(color = "white",
                                                       fillOpacity = 2,
                                                       bringToFront = TRUE
                   )) %>%
       addLegend("bottomright",
                 pal          = pal,
-                values       = ~(final_table$percent_of_shoplifting),
+                values       = ~(summary_table$percent_of_shoplifting),
                 opacity      = 0.8,
                 title        = "Does this work",
                 labFormat    = labelFormat(suffix = "%"))

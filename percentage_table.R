@@ -47,6 +47,6 @@ final_table$percent_of_burglary <- final_table$burglary / final_table$total_crim
 state_converter <- read.csv("states_converter/states_converter.csv")
 state_full_name <- state_converter$State
 names(state_full_name) <- state_converter$Abbreviation
-final_table$state_full_name <- state_full_name[as.character(final_table$state_name)]
+summary_table$state_full_name <- state_full_name[as.character(final_table$state_name)]
 
 View(final_table)
