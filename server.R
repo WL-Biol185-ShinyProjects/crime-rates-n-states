@@ -40,10 +40,8 @@ function(input, output) {
                 title        = "Does this work",
                 labFormat    = labelFormat(suffix = "%"))
   })
-}
 
 
-function(input, output) { 
   x <- reactive({
     if(
       input$RaceSexState == "Race") {
@@ -74,24 +72,24 @@ output$bar <- renderPlot({
 output$summary <- renderText({
  summary(x())
 })
-}
+
 
 #BIOGRAPHIES 
-function(input, output, session) {
+ 
   observeEvent(input$natasha, {
-    output$selected_var <- renderText({ 
+    output$biographies <- renderText({ 
       "Natasha is a senior math major"
   })
               
   })
   observeEvent(input$leah, {
-    output$selected_var <- renderText({ 
+    output$biographies <- renderText({ 
       "Leah is a senior Biology major"
     })
     
   })
   observeEvent(input$hieu, {
-    output$selected_var <- renderText({ 
+    output$biographies <- renderText({ 
       "Hieu is a senior neuroscience major"
     })
   })
