@@ -7,7 +7,7 @@ library(shinydashboard)
 function(input, output){
   
   
-  output$aprMap <- renderLeaflet({
+  output$CrimeMap <- renderLeaflet({
     
     state_map  <- rgdal::readOGR("states.geo.json")
     source("percentage_table.R")
