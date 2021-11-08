@@ -7,6 +7,7 @@ library(leaflet)
 
 state_map  <- rgdal::readOGR("states.geo.json")
 source("percentage_table.R")
+source("individual_offense_table.R")
 
 function(input, output) {
   output$CrimeMap <- renderLeaflet({
@@ -42,36 +43,36 @@ function(input, output) {
   })
 
 
-  x <- reactive({
-    if(
-      input$RaceSexState == "Race") {
-      aggregate_edited$race
-    } else {
-            if(
-              input$RaceSexState == "Sex") {
-              aggregate_edited$sex
-            } else {
-                    aggregate_edited$state_name
-                   }
-           }
-              })
-
-# DEMOGRAPHICS filter the data by the chosen offense
-aggregate_edited_filtered <- aggregate_edited %>% 
-  filter (                   aggregate_edited$offense_type %in% 
-                             input$OffenseType)
-  
-# DEMOGRAPHICS creating bar graph
-output$bar <- renderPlot({
-  ggplot(data                  = aggregate_edited_filtered,
-         aes_string( x         = input$RaceSexState)) +
-  geom_bar() + 
-  theme(legend.position = "bottom")
-                        })
-
-output$summary <- renderText({
- summary(x())
-})
+  output$demographic_bar <- renderPlot(
+    
+    x <- reactive({
+      if(
+        input$RaceSexState == "Race") {
+        aggregate_edited$race
+      } else {
+        if(
+          input$RaceSexState == "Sex") {
+          aggregate_edited$sex
+        } else {
+          aggregate_edited$state_name
+        }
+      }
+    }),
+    
+    # DEMOGRAPHICS filter the data by the chosen offense
+    aggregate_edited_filtered <- aggregate_edited %>% 
+      filter (                   aggregate_edited$offense_type %in% 
+                                   input$OffenseType),
+    
+    # DEMOGRAPHICS creating bar graph
+    output$bar <- renderPlot({
+      ggplot(data                  = aggregate_edited_filtered,
+             aes_string( x         = input$RaceSexState)) +
+        geom_bar() + 
+        theme(legend.position = "bottom")
+    })
+    
+  )
 
 
 #BIOGRAPHIES 
