@@ -10,10 +10,10 @@ ui <- navbarPage("Crime Rates by States",
                           fluidRow(
                             p("Look at a map of crimes in the USA."),
                            
-                            column(3,
-                                   radioButtons("radio", h3("Radio buttons"),
-                                                choices = list("Choice 1" = 1, "Choice 2" = 2,
-                                                               "Choice 3" = 3, "Choice 4" = 4),selected = 1)),
+                            column(4,
+                                   radioButtons("radio", h3("Crime Options"),
+                                                choices = list("Shoplifting" = 1, "Simple Assault" = 2,
+                                                               "Drug and Narcotic Violations" = 3, "Burglary" = 4),selected = 1)),
 
                             
                              box(width = 14,
