@@ -10,6 +10,7 @@ summary_table <- read.csv("summary_table_folder/summary_table.csv")
 aggregate_edited <- read.csv("aggregate_edited_folder/aggregate_edited.csv")
 
 function(input, output) {
+  
   output$CrimeMap <- renderLeaflet({
 
     #merge data frame into states
