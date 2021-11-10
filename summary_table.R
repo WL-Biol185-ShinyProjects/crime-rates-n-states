@@ -1,7 +1,8 @@
 library(dplyr)
 library(tidyverse)
 
-source("individual_offense_table.R")
+aggregate_edited <- read.csv("aggregate_edited_folder/aggregate_edited.csv")
+
 
 summary_df <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
@@ -49,7 +50,7 @@ state_full_name <- state_converter$State
 names(state_full_name) <- state_converter$Abbreviation
 summary_table$state_full_name <- state_full_name[as.character(summary_table$state_name)]
 
-write.csv(summary_table,"summary_table.csv", row.names = TRUE)
+#write.csv(summary_table,"summary_table_folder/summary_table.csv", row.names = TRUE)
 
 
 

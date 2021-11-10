@@ -51,5 +51,5 @@ aggregate_edited <- aggregate_edited %>%
          arrest_date = ARREST_DATE,
          age         = AGE_NUM)
 
-write.csv(aggregate_edited,"aggregate_edited.csv", row.names = TRUE)
+write.csv(aggregate_edited,"aggregate_edited_folder/aggregate_edited.csv", row.names = TRUE)
 
