@@ -17,7 +17,7 @@ function(input, output) {
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
 
 
-    pal <- colorNumeric("YlOrRd", NULL)
+    pal <- colorNumeric("Purples", NULL)
     map<-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
