@@ -18,6 +18,7 @@ ui <- navbarPage("Crime Rates by States",
                     
                  tabPanel("Demographics", # demographic breakdown data
                            fluidPage(
+                             titlePanel("Demographic Breakdowns"),
                              sidebarLayout(
                                sidebarPanel(
                                  selectizeInput("OffenseType", 
@@ -110,18 +111,20 @@ ui <- navbarPage("Crime Rates by States",
                                                              "Driving Under the Influence"               = 'Driving Under the Influence',
                                                              "All Other Offenses"                        = 'All Other Offenses')
                                             ),
-                                 
                                  selectInput("RaceSexState",
                                              label    = "Choose a Sex, Race, or State",
                                              multiple = FALSE,
                                              choices  = c("Race"  = 'race', 
                                                           "Sex"   = 'sex', 
                                                           "State" = 'state_name')
-                                 )),
-                                   plotOutput("demographic_bar"),
-                                 )
-                             )
-                           ),
+                                            )
+                                          ),
+                             mainPanel(
+                               plotOutput("demographic_bar")
+                                      ),
+                                          )
+                                  )
+                          ),
               
                  navbarMenu("More",
                             tabPanel("About the Creators",
