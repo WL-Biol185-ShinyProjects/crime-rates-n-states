@@ -7,7 +7,7 @@ library(leaflet)
 
 state_map  <- rgdal::readOGR("states.geo.json")
 summary_table <- read.csv("summary_table_folder/summary_table.csv")
-aggregate_edited <- read.csv("aggregate_edited_folder/aggregate_edited.csv")
+aggregate_edited <- readRDS("individual_offense.RDS")
 
 function(input, output) {
   
