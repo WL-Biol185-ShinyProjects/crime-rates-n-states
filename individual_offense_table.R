@@ -51,5 +51,5 @@ aggregate_edited <- aggregate_edited %>%
          arrest_date = ARREST_DATE,
          age         = AGE_NUM)
 
-writeRDS(aggregate_edited,"aggregate_edited.RDS", row.names = TRUE)
-saveRDS("aggregate_edited.RDS")
+writeRDS(aggregate_edited,"individual_offense.RDS", row.names = TRUE)
+saveRDS("individual_offense.RDS")
