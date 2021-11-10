@@ -53,10 +53,9 @@ function(input, output) {
       
       ggplot(data                  = aggregate_edited_filtered,
              aes_string(x          = input$RaceSexState)) +
-        geom_bar() + 
-        theme(legend.position = "bottom")
+        geom_bar() 
+        #theme(legend.position = "bottom")
     })
-
 
 #BIOGRAPHIES 
  
