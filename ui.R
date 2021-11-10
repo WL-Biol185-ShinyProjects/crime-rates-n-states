@@ -15,6 +15,9 @@ ui <- navbarPage("Crime Rates by States",
                                                 choices = list("Shoplifting" = 1, "Simple Assault" = 2,
                                                                "Drug and Narcotic Violations" = 3, "Burglary" = 4),selected = 1)
                                    ),
+                            box(width = 14,
+                                leafletOutput("CrimeMap")
+                                )
                                   )
                          ),
                     
