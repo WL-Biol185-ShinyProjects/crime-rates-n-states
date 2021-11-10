@@ -1,7 +1,7 @@
 library(dplyr)
 library(tidyverse)
 
-aggregate_edited <- read.csv("aggregate_edited_folder/aggregate_edited.csv")
+aggregate_edited <- readRDS("individual_offense.RDS")
 
 
 summary_df <- aggregate_edited %>%
