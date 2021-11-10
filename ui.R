@@ -13,11 +13,8 @@ ui <- navbarPage("Crime Rates by States",
                             column(3,
                                    radioButtons("radio", h3("Radio buttons"),
                                                 choices = list("Choice 1" = 1, "Choice 2" = 2,
-<<<<<<< HEAD
                                                                "Choice 3" = 3, "Choice 4" = 4),selected = 1)),
-=======
-                                                               "Choice 3" = 3),selected = 1)),
->>>>>>> a34e831484f513fa0a9f9ae321b89e47c52704ee
+
                             
                              box(width = 14,
                                 leafletOutput("CrimeMap"
