@@ -1,7 +1,8 @@
 library(dplyr)
 library(tidyverse)
 
-source("individual_offense_table.R")
+aggregate_edited <- read.csv("aggregate_edited_folder/aggregate_edited.csv")
+
 
 summary_df <- aggregate_edited %>%
   group_by(state_name, offense_type) %>%
