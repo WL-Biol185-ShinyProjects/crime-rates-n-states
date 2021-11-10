@@ -43,15 +43,14 @@ function(input, output) {
                 labFormat    = labelFormat(suffix = "%"))
   })
     
-    # DEMOGRAPHICS filter the data by the chosen offense
-    
-    aggregate_edited_filtered <- aggregate_edited %>% 
-      filter (                   aggregate_edited$offense_type %in% 
-                                   input$OffenseType)
-    
     # DEMOGRAPHICS creating bar graph
     
     output$demographic_bar <- renderPlot({
+      
+      aggregate_edited_filtered <- aggregate_edited %>% 
+        filter (                   aggregate_edited$offense_type %in% 
+                                     input$OffenseType)
+      
       ggplot(data                  = aggregate_edited_filtered,
              aes_string( x         = input$RaceSexState)) +
         geom_bar() + 
