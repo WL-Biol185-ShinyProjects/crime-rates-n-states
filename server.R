@@ -19,7 +19,7 @@ function(input, output) {
 
     pal <- colorNumeric("YlOrRd", NULL)
     map<-
-      leaflet(data= state_map) %>%
+      leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
       addTiles() %>%
       addPolygons(stroke = FALSE,
