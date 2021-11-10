@@ -52,7 +52,7 @@ function(input, output) {
                                      input$OffenseType)
       
       ggplot(data                  = aggregate_edited_filtered,
-             aes_string( x         = input$RaceSexState)) +
+             aes_string(x          = input$RaceSexState)) +
         geom_bar() + 
         theme(legend.position = "bottom")
     })
