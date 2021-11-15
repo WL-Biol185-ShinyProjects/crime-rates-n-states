@@ -86,19 +86,23 @@ function(input, output) {
     
     output$demographic_bar <- renderPlot({
       
-      aggregate_edited_filtered <- aggregate_edited %>% 
-       filter (                   aggregate_edited$offense_type %in% 
-                                     input$OffenseType)
+      #aggregate_edited_filtered <- aggregate_edited %>% 
+       #filter (                   aggregate_edited$offense_type %in% 
+                                     #input$OffenseType)
       
-      count <- aggregate_edited %>%
-        group_by(input$RaceSexState) %>%
-        summarise(input$OffenseType == n()) #%>%
-        filter(offense_type == input$OffenseType)
-      count <- NULL # only show where it is TRUE to count
+    # count <- aggregate_edited %>%
+        #group_by(input$RaceSexState, input$OffenseType) %>%
+        #summarise(input$OffenseType == n()) %>%
+        #filter(offense_type == input$OffenseType)
+      #count <- NULL # only show where it is TRUE to count
       
-      ggplot(data                  = aggregate_edited,
+      count_df <- aggregate_edited %>%
+        group_by(input$RaceSexState, offense_type) %>%
+        summarise(count = n())
+      
+      ggplot(data                  = count_df,
              aes_string(x          = input$RaceSexState,
-                        y          = count )) +
+                        y          = count)) +
         geom_bar(stat = "identity") 
       
       # theme(legend.position = "bottom")
