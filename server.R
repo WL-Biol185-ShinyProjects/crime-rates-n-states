@@ -11,7 +11,9 @@ aggregate_edited <- readRDS("individual_offense.RDS")
 
 function(input, output) {
   
-  output$CrimeMap <- renderLeaflet({
+ observeEvent(input$shoplifting, {
+   
+  output$crime_map <- renderLeaflet({
 
     #merge data frame into states
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
@@ -42,7 +44,44 @@ function(input, output) {
                 title        = "Shoplifting Percentage",
                 labFormat    = labelFormat(suffix = "%"))
   })
+ }
+ )
+  
+  observeEvent(input$simple_assault, {
     
+    output$crime_map <- renderLeaflet({
+      
+      #merge data frame into states
+      state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
+      
+      
+      pal <- colorNumeric("Reds", NULL)
+      map<-
+        leaflet(data = state_map) %>%
+        setView(-96, 37.8, 4)%>%
+        addTiles() %>%
+        addPolygons(stroke = FALSE,
+                    smoothFactor     = 0.3,
+                    fillOpacity      = 0.6,
+                    opacity          = 1,
+                    dashArray        = "3",
+                    weight           = 2,
+                    color            = "white",
+                    fillColor        = ~pal(state_map$percent_of_simple_assault),
+                    label            = ~paste0(NAME, ": ", formatC(state_map$percent_of_simple_assault)),
+                    highlightOptions = highlightOptions(color = "white",
+                                                        fillOpacity = 2,
+                                                        bringToFront = TRUE
+                    )) %>%
+        addLegend("bottomright",
+                  pal          = pal,
+                  values       = ~(state_map$percent_of_simple_assault),
+                  opacity      = 0.8,
+                  title        = "Simple Assault Percentage",
+                  labFormat    = labelFormat(suffix = "%"))
+    })
+  }
+  )
     # DEMOGRAPHICS creating bar graph
     
     output$demographic_bar <- renderPlot({
