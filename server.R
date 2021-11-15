@@ -83,10 +83,21 @@ function(input, output) {
         filter (                   aggregate_edited$offense_type %in% 
                                      input$OffenseType)
       
+      count <- aggregate_edited_filtered %>%
+        group_by(input$RaceSexState, offense_type) %>%
+        summarise(input$OffenseType = n()) %>%
+        filter(offense_type == input$OffenseType)
+      count <- NULL # only show where it is TRUE to count
+      
       ggplot(data                  = aggregate_edited_filtered,
-             aes_string(x          = input$RaceSexState)) +
-        geom_bar() 
-        #theme(legend.position = "bottom")
+             aes_string(x          = input$RaceSexState,
+                        y          = count)) +
+        geom_bar(stat = "identity") 
+      
+      # theme(legend.position = "bottom")
+      # sort from greatest to least
+      # choose custom color
+      
     })
 
 #BIOGRAPHIES 
