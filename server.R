@@ -167,10 +167,6 @@ if(input$radio == "shoplifting") {
       # theme(legend.position = "bottom")
       # sort from greatest to least
       # choose custom color
-      
-      ggplot(data                  = aggregate_edited_filtered,
-             aes_string(x          = input$RaceSexState)) +
-        geom_bar() 
         #theme(legend.position = "bottom")
     })
 
