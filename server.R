@@ -11,7 +11,7 @@ aggregate_edited <- readRDS("individual_offense.RDS")
 
 function(input, output) {
   
-  output$CrimeMap <- renderLeaflet({
+  output$shoplifting_map <- renderLeaflet({
 
     #merge data frame into states
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
