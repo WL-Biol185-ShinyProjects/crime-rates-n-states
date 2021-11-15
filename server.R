@@ -12,12 +12,13 @@ aggregate_edited <- readRDS("individual_offense.RDS")
 function(input, output) {
   
   output$shoplifting_map <- renderLeaflet({
-
     #merge data frame into states
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
+    
+    ifelse(input$radio == "shoplifting",
 
 
-    pal <- colorNumeric("Purples", NULL)
+    pal <- colorNumeric("Purples", NULL),
     map<-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
@@ -40,16 +41,13 @@ function(input, output) {
                 values       = ~(state_map$percent_of_shoplifting),
                 opacity      = 0.8,
                 title        = "Shoplifting Percentage",
-                labFormat    = labelFormat(suffix = "%"))
-  })
-  
-  output$simple_assault_map <- renderLeaflet({
-    
-    #merge data frame into states
-    state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
+                labFormat    = labelFormat(suffix = "%")),
     
     
-    pal <- colorNumeric("Reds", NULL)
+    ifelse(input$radio == "simple_assault",
+    
+    
+    pal <- colorNumeric("Reds", NULL),
     map<-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
@@ -69,11 +67,11 @@ function(input, output) {
                   )) %>%
       addLegend("bottomright",
                 pal          = pal,
-                values       = ~(state_map$percent_of_simple_assult,
+                values       = ~(state_map$percent_of_simple_assult),
                 opacity      = 0.8,
                 title        = "Shoplifting Percentage",
                 labFormat    = labelFormat(suffix = "%"))
-  })
+  ))})
     
     # DEMOGRAPHICS creating bar graph
     
