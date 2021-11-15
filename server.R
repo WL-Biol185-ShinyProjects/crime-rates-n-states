@@ -141,8 +141,6 @@ if(input$radio == "shoplifting") {
        #filter (                   aggregate_edited$offense_type %in% 
                                      #input$OffenseType)
       
-<<<<<<< HEAD
-      
     # count <- aggregate_edited %>%
         #group_by(input$RaceSexState, input$OffenseType) %>%
         #summarise(input$OffenseType == n()) %>%
@@ -170,12 +168,10 @@ if(input$radio == "shoplifting") {
       # sort from greatest to least
       # choose custom color
       
-=======
       ggplot(data                  = aggregate_edited_filtered,
              aes_string(x          = input$RaceSexState)) +
         geom_bar() 
         #theme(legend.position = "bottom")
->>>>>>> 1aa918eea6297ec29639566fa64b162860d4b7e5
     })
 
 #BIOGRAPHIES 
