@@ -90,19 +90,28 @@ function(input, output) {
        #filter (                   aggregate_edited$offense_type %in% 
                                      #input$OffenseType)
       
+      
     # count <- aggregate_edited %>%
         #group_by(input$RaceSexState, input$OffenseType) %>%
         #summarise(input$OffenseType == n()) %>%
         #filter(offense_type == input$OffenseType)
       #count <- NULL # only show where it is TRUE to count
       
-      count_df <- aggregate_edited %>%
-        group_by(input$RaceSexState, offense_type) %>%
-        summarise(count = n())
+      #count_df <- aggregate_edited %>%
+       # group_by(input$RaceSexState, offense_type) %>%
+        #summarise(count = n())
       
-      ggplot(data                  = count_df,
+      #hieu 
+      #female <- aggregate_edited %>%
+        #group_by(offense_type, sex) %>%
+        #summarise(female_count = n()) %>%
+        #filter(sex == "male")
+      #female$sex <- NULL
+      #View(female)
+      
+      ggplot(data                  = aggregate_edited, 
              aes_string(x          = input$RaceSexState,
-                        y          = count)) +
+                        y          = count(aggregate_edited, input$OffenseType, input$RaceSexState))) +
         geom_bar(stat = "identity") 
       
       # theme(legend.position = "bottom")
