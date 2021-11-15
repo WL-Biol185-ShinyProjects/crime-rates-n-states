@@ -12,11 +12,14 @@ ui <- navbarPage("Crime Rates by States",
                            
                             column(1,
                                    radioButtons("radio", h3("Crime Options"),
-                                                choices = list("Shoplifting" = "shoplifting", "Simple Assault" = "simple_assault",
-                                                               "Drug and Narcotic Violations" = 3, "Burglary" = 4),selected = 1)
+                                                choices = list("Shoplifting" = "shoplifting", 
+                                                               "Simple Assault" = "simple_assault",
+                                                               "Drug and Narcotic Violations" = "drugs", 
+                                                               "Burglary" = "burglary"),
+                                                selected = 1)
                                    ),
                             box(width = 14,
-                                leafletOutput("crime_map")
+                                leafletOutput("shoplifting_map")
                                 )
                                   )
                          ),
@@ -142,7 +145,7 @@ ui <- navbarPage("Crime Rates by States",
                                                        actionButton("leah",    label = "Leah Jackson"),
                                                        actionButton("hieu",    label = "Hieu Nguyen"))
                                                             ),
-                                         mainPanel(    textOutput("biographies")
+                                         mainPanel(    textOutput("selected_var")
                                                   )
                                                     )
                                            ) 

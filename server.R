@@ -11,19 +11,17 @@ aggregate_edited <- readRDS("individual_offense.RDS")
 
 function(input, output) {
   
- observeEvent(input$shoplifting, {
-   
-  output$crime_map <- renderLeaflet({
-
+  output$shoplifting_map <- renderLeaflet({
     #merge data frame into states
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
-
+    
+if(input$radio == "shoplifting") {
 
     pal <- colorNumeric("Purples", NULL)
     map<-
       leaflet(data = state_map) %>%
-      setView(-96, 37.8, 4)%>%
-      addTiles() %>%
+      setView(-96, 37.8, 4)     %>%
+      addTiles()                %>%
       addPolygons(stroke = FALSE,
                   smoothFactor     = 0.3,
                   fillOpacity      = 0.6,
@@ -43,19 +41,43 @@ function(input, output) {
                 opacity      = 0.8,
                 title        = "Shoplifting Percentage",
                 labFormat    = labelFormat(suffix = "%"))
-  })
- }
- )
-  
-  observeEvent(input$simple_assault, {
+
+}
     
-    output$crime_map <- renderLeaflet({
+    
+    if(input$radio == "simple_assault"){
+    
+    
+    pal <- colorNumeric("Reds", NULL)
+    map<-
+      leaflet(data = state_map) %>%
+      setView(-96, 37.8, 4)%>%
+      addTiles() %>%
+      addPolygons(stroke = FALSE,
+                  smoothFactor     = 0.3,
+                  fillOpacity      = 0.6,
+                  opacity          = 1,
+                  dashArray        = "3",
+                  weight           = 2,
+                  color            = "white",
+                  fillColor        = ~pal(state_map$percent_of_simple_assault),
+                  label            = ~paste0(NAME, ": ", formatC(state_map$percent_of_simple_assault)),
+                  highlightOptions = highlightOptions(color = "white",
+                                                      fillOpacity = 2,
+                                                      bringToFront = TRUE
+                  )) %>%
+      addLegend("bottomright",
+                pal          = pal,
+                values       = ~(state_map$percent_of_simple_assault),
+                opacity      = 0.8,
+                title        = "Shoplifting Percentage",
+                labFormat    = labelFormat(suffix = "%"))
+    }
+    
+    if(input$radio == "drugs"){
       
-      #merge data frame into states
-      state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
       
-      
-      pal <- colorNumeric("Reds", NULL)
+      pal <- colorNumeric("Greens", NULL)
       map<-
         leaflet(data = state_map) %>%
         setView(-96, 37.8, 4)%>%
@@ -67,21 +89,50 @@ function(input, output) {
                     dashArray        = "3",
                     weight           = 2,
                     color            = "white",
-                    fillColor        = ~pal(state_map$percent_of_simple_assault),
-                    label            = ~paste0(NAME, ": ", formatC(state_map$percent_of_simple_assault)),
+                    fillColor        = ~pal(state_map$percent_of_drug_and_narcotic_violations),
+                    label            = ~paste0(NAME, ": ", formatC(state_map$percent_of_drug_and_narcotic_violations)),
                     highlightOptions = highlightOptions(color = "white",
                                                         fillOpacity = 2,
                                                         bringToFront = TRUE
                     )) %>%
         addLegend("bottomright",
                   pal          = pal,
-                  values       = ~(state_map$percent_of_simple_assault),
+                  values       = ~(state_map$percent_of_drug_and_narcotic_violations),
                   opacity      = 0.8,
-                  title        = "Simple Assault Percentage",
+                  title        = "Drug and Narcotics Violations Percentage",
                   labFormat    = labelFormat(suffix = "%"))
+    }    
+    if(input$radio == "burglary"){
+      
+      
+      pal <- colorNumeric("Blues", NULL)
+      map<-
+        leaflet(data = state_map) %>%
+        setView(-96, 37.8, 4)%>%
+        addTiles() %>%
+        addPolygons(stroke = FALSE,
+                    smoothFactor     = 0.3,
+                    fillOpacity      = 0.6,
+                    opacity          = 1,
+                    dashArray        = "3",
+                    weight           = 2,
+                    color            = "white",
+                    fillColor        = ~pal(state_map$percent_of_burglary),
+                    label            = ~paste0(NAME, ": ", formatC(state_map$percent_of_burglary)),
+                    highlightOptions = highlightOptions(color = "white",
+                                                        fillOpacity = 2,
+                                                        bringToFront = TRUE
+                    )) %>%
+        addLegend("bottomright",
+                  pal          = pal,
+                  values       = ~(state_map$percent_of_burglary),
+                  opacity      = 0.8,
+                  title        = "Drug and Narcotics Violations Percentage",
+                  labFormat    = labelFormat(suffix = "%"))
+                                   }    
+    
     })
-  }
-  )
+    
     # DEMOGRAPHICS creating bar graph
     
     output$demographic_bar <- renderPlot({
@@ -90,6 +141,7 @@ function(input, output) {
        #filter (                   aggregate_edited$offense_type %in% 
                                      #input$OffenseType)
       
+<<<<<<< HEAD
       
     # count <- aggregate_edited %>%
         #group_by(input$RaceSexState, input$OffenseType) %>%
@@ -118,6 +170,12 @@ function(input, output) {
       # sort from greatest to least
       # choose custom color
       
+=======
+      ggplot(data                  = aggregate_edited_filtered,
+             aes_string(x          = input$RaceSexState)) +
+        geom_bar() 
+        #theme(legend.position = "bottom")
+>>>>>>> 1aa918eea6297ec29639566fa64b162860d4b7e5
     })
 
 #BIOGRAPHIES 
