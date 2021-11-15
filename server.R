@@ -15,14 +15,13 @@ function(input, output) {
     #merge data frame into states
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
     
-    ifelse(input$radio == "shoplifting",
+if(input$radio == "shoplifting") {
 
-
-    pal <- colorNumeric("Purples", NULL),
+    pal <- colorNumeric("Purples", NULL)
     map<-
       leaflet(data = state_map) %>%
-      setView(-96, 37.8, 4)%>%
-      addTiles() %>%
+      setView(-96, 37.8, 4)     %>%
+      addTiles()                %>%
       addPolygons(stroke = FALSE,
                   smoothFactor     = 0.3,
                   fillOpacity      = 0.6,
@@ -41,13 +40,15 @@ function(input, output) {
                 values       = ~(state_map$percent_of_shoplifting),
                 opacity      = 0.8,
                 title        = "Shoplifting Percentage",
-                labFormat    = labelFormat(suffix = "%")),
+                labFormat    = labelFormat(suffix = "%"))
+
+}
     
     
-    ifelse(input$radio == "simple_assault",
+    if(input$radio == "simple_assault"){
     
     
-    pal <- colorNumeric("Reds", NULL),
+    pal <- colorNumeric("Reds", NULL)
     map<-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
@@ -67,11 +68,70 @@ function(input, output) {
                   )) %>%
       addLegend("bottomright",
                 pal          = pal,
-                values       = ~(state_map$percent_of_simple_assult),
+                values       = ~(state_map$percent_of_simple_assault),
                 opacity      = 0.8,
                 title        = "Shoplifting Percentage",
                 labFormat    = labelFormat(suffix = "%"))
-  ))})
+    }
+    
+    if(input$radio == "drugs"){
+      
+      
+      pal <- colorNumeric("Greens", NULL)
+      map<-
+        leaflet(data = state_map) %>%
+        setView(-96, 37.8, 4)%>%
+        addTiles() %>%
+        addPolygons(stroke = FALSE,
+                    smoothFactor     = 0.3,
+                    fillOpacity      = 0.6,
+                    opacity          = 1,
+                    dashArray        = "3",
+                    weight           = 2,
+                    color            = "white",
+                    fillColor        = ~pal(state_map$percent_of_drug_and_narcotic_violations),
+                    label            = ~paste0(NAME, ": ", formatC(state_map$percent_of_drug_and_narcotic_violations)),
+                    highlightOptions = highlightOptions(color = "white",
+                                                        fillOpacity = 2,
+                                                        bringToFront = TRUE
+                    )) %>%
+        addLegend("bottomright",
+                  pal          = pal,
+                  values       = ~(state_map$percent_of_drug_and_narcotic_violations),
+                  opacity      = 0.8,
+                  title        = "Drug and Narcotics Violations Percentage",
+                  labFormat    = labelFormat(suffix = "%"))
+    }    
+    if(input$radio == "burglary"){
+      
+      
+      pal <- colorNumeric("Blues", NULL)
+      map<-
+        leaflet(data = state_map) %>%
+        setView(-96, 37.8, 4)%>%
+        addTiles() %>%
+        addPolygons(stroke = FALSE,
+                    smoothFactor     = 0.3,
+                    fillOpacity      = 0.6,
+                    opacity          = 1,
+                    dashArray        = "3",
+                    weight           = 2,
+                    color            = "white",
+                    fillColor        = ~pal(state_map$percent_of_burglary),
+                    label            = ~paste0(NAME, ": ", formatC(state_map$percent_of_burglary)),
+                    highlightOptions = highlightOptions(color = "white",
+                                                        fillOpacity = 2,
+                                                        bringToFront = TRUE
+                    )) %>%
+        addLegend("bottomright",
+                  pal          = pal,
+                  values       = ~(state_map$percent_of_burglary),
+                  opacity      = 0.8,
+                  title        = "Drug and Narcotics Violations Percentage",
+                  labFormat    = labelFormat(suffix = "%"))
+                                   }    
+    
+    })
     
     # DEMOGRAPHICS creating bar graph
     
