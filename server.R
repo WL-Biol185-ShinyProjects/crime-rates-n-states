@@ -159,9 +159,11 @@ if(input$radio == "shoplifting") {
       #female$sex <- NULL
       #View(female)
       
+      choosen_count <- count(aggregate_edited, input$OffenseType, input$RaceSexState)
+      
       ggplot(data                  = aggregate_edited, 
              aes_string(x          = input$RaceSexState,
-                        y          = count(aggregate_edited, input$OffenseType, input$RaceSexState))) +
+                        y          = choosen_count)) +
         geom_bar(stat = "identity") 
       
       # theme(legend.position = "bottom")
