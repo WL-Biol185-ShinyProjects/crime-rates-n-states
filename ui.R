@@ -11,15 +11,15 @@ ui <- navbarPage("Crime Rates by States",
                             p("Look at a map of crimes in the USA."),
                            
                             column(1,
-                                   radioButtons("radio", h3("Crime Options"),
-                                                choices = list("Shoplifting" = "shoplifting", 
-                                                               "Simple Assault" = "simple_assault",
-                                                               "Drug and Narcotic Violations" = "drugs", 
-                                                               "Burglary" = "burglary"),
+                                   radioButtons("crime_radio", h3("Crime Options"),
+                                                choices = list("Shoplifting"                  = "percent_of_shoplifting", 
+                                                               "Simple Assault"               = "percent_of_simple_assault",
+                                                               "Drug and Narcotic Violations" = "percent_of_drug_and_narcotic_violations", 
+                                                               "Burglary"                     = "percent_of_burglary"),
                                                 selected = 1)
                                    ),
                             box(width = 14,
-                                leafletOutput("shoplifting_map")
+                                leafletOutput("crime_map")
                                 )
                                   )
                          ),
