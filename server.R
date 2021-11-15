@@ -10,16 +10,16 @@ summary_table <- read.csv("summary_table_folder/summary_table.csv")
 aggregate_edited <- readRDS("individual_offense.RDS")
 
 function(input, output) {
-  
- observeEvent(input$shoplifting, {
+
    
   output$crime_map <- renderLeaflet({
+    ifelse( input$radio == "shoplifting", 
 
     #merge data frame into states
-    state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
+    state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name")),
 
 
-    pal <- colorNumeric("Purples", NULL)
+    pal <- colorNumeric("Purples", NULL),
     map<-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
@@ -42,20 +42,14 @@ function(input, output) {
                 values       = ~(state_map$percent_of_shoplifting),
                 opacity      = 0.8,
                 title        = "Shoplifting Percentage",
-                labFormat    = labelFormat(suffix = "%"))
-  })
- }
- )
+                labFormat    = labelFormat(suffix = "%")),
   
-  observeEvent(input$simple_assault, {
-    
-    output$crime_map <- renderLeaflet({
-      
+      ifelse( input$radio == "simple_assault",  
       #merge data frame into states
-      state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
+      state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name")),
       
       
-      pal <- colorNumeric("Reds", NULL)
+      pal <- colorNumeric("Reds", NULL),
       map<-
         leaflet(data = state_map) %>%
         setView(-96, 37.8, 4)%>%
@@ -79,9 +73,8 @@ function(input, output) {
                   opacity      = 0.8,
                   title        = "Simple Assault Percentage",
                   labFormat    = labelFormat(suffix = "%"))
-    })
-  }
-  )
+    ))})
+
     # DEMOGRAPHICS creating bar graph
     
     output$demographic_bar <- renderPlot({
