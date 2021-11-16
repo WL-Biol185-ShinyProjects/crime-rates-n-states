@@ -71,12 +71,16 @@ function(input, output) {
       #female$sex <- NULL
       #View(female)
       
-      choosen_count <- count(aggregate_edited, input$OffenseType, input$RaceSexState)
+      #choosen_count <- count(aggregate_edited, input$OffenseType, input$RaceSexState)
       
-      ggplot(data                  = aggregate_edited, 
-             aes_string(x          = input$RaceSexState,
-                        y          = choosen_count)) +
-        geom_bar(stat = "identity") 
+      count_df <- aggregate_edited %>% 
+        filter (aggregate_edited$offense_type %in% input$OffenseType) %>% 
+        count(offense_type, input$RaceSexState)
+      
+      ggplot(    data= count_df, 
+             aes(   x= input$RaceSexState, 
+                    y= n)) +
+        geom_bar(stat="identity")
       
       # theme(legend.position = "bottom")
       # sort from greatest to least
