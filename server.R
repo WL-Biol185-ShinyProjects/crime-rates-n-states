@@ -14,9 +14,7 @@ function(input, output) {
   output$crime_map <- renderLeaflet({
     #merge data frame into states
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
-    
-    print(input$crime_radio)
-      
+
       pal <- colorNumeric("Purples", NULL)
     map<-
       leaflet(data = state_map) %>%
