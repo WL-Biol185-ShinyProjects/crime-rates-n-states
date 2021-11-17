@@ -20,7 +20,11 @@ ui <- navbarPage("Crime Rates by States",
                                    ),
                             box(width = 14,
                                 leafletOutput("crime_map")
-                                )
+                                ),
+                            
+                            p("Alaska, California, Florida, New Jersey, and New York did not report their crimes to the FBI database. 
+                              In addition, different states had different procedures, which led to varying levels level at the state level. 
+                              To navigate this problem, we calculated the percentage of the crimes by state in order to compare the crimes by state.")
                                   )
                          ),
                     
