@@ -3,8 +3,8 @@ library(shiny)
 library(shinydashboard)
 
 ui <- navbarPage("Crime Rates by States",
-                 tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
-                         ),
+                # tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
+                         #),
                  
                  tabPanel("Map", # maps
                           fluidRow(
@@ -18,13 +18,14 @@ ui <- navbarPage("Crime Rates by States",
                                                                "Burglary"                     = "percent_of_burglary"),
                                                 selected = "percent_of_shoplifting")
                                    ),
+                            br(),
                             box(width = 14,
                                 leafletOutput("crime_map")
                                 ),
                             br(),
                             br(),
                             box(width = 12,
-                            p("Alaska, California, Florida, New Jersey, and New York did not report ant of their crimes to the FBI database. 
+                            p("Alaska, California, Florida, New Jersey, and New York did not report any of their crimes to the FBI database. 
                               In addition, most states only reported a fraction of crimes to the FBI, with several precincts within each state 
                               either choosing not to report directly to the FBI or using their own format. To navigate this problem, we calculated
                               the percentage of each type of crime by state in order to more accurately compare the crime rates between states 
