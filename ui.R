@@ -159,7 +159,11 @@ ui <- navbarPage("Crime Rates by States",
                                                     )
                                            ) 
                                      ),
-                            tabPanel("Citations")
+                            tabPanel("Citations",
+                                     fluidpanel(
+                                       p("Our data was taken from the Federal Bureau of Investigation Crime Data Explorer Page. 
+                                         All of the data are available to public.")
+                                     ))
                           )
                  )
 
