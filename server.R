@@ -10,15 +10,15 @@ summary_table <- read.csv("summary_table_folder/summary_table.csv")
 aggregate_edited <- readRDS("individual_offense.RDS")
 
 function(input, output) {
-  
   output$crime_map <- renderLeaflet({
     #merge data frame into states
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
     
     print(input$crime_radio)
-      
       pal <- colorNumeric("Purples", NULL)
     map <-
+      pal <- colorNumeric("viridis", NULL)
+    map<-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
       addTiles() %>%
@@ -61,7 +61,7 @@ function(input, output) {
                          y = "n"
                         )) +
         geom_bar(stat="identity")
-      
+
       # theme(legend.position = "bottom")
       # sort from greatest to least
       # choose custom color

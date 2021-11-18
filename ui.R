@@ -3,25 +3,35 @@ library(shiny)
 library(shinydashboard)
 
 ui <- navbarPage("Crime Rates by States",
-                 tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
-                         ),
+                # tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
+                         #),
                  
                  tabPanel("Map", # maps
                           fluidRow(
                             p("Look at a map of crimes in the USA."),
                            
-                            column(1,
+                            column(10,
                                    radioButtons("crime_radio", h3("Crime Options"),
                                                 choices = list("Shoplifting"                  = "percent_of_shoplifting", 
                                                                "Simple Assault"               = "percent_of_simple_assault",
                                                                "Drug and Narcotic Violations" = "percent_of_drug_and_narcotic_violations", 
                                                                "Burglary"                     = "percent_of_burglary"),
-                                                selected = 1)
+                                                selected = "percent_of_shoplifting")
                                    ),
+                            br(),
                             box(width = 14,
                                 leafletOutput("crime_map")
-                                )
+                                ),
+                            br(),
+                            br(),
+                            box(width = 12,
+                            p("Alaska, California, Florida, New Jersey, and New York did not report any of their crimes to the FBI database. 
+                              In addition, most states only reported a fraction of crimes to the FBI, with several precincts within each state 
+                              either choosing not to report directly to the FBI or using their own format. To navigate this problem, we calculated
+                              the percentage of each type of crime by state in order to more accurately compare the crime rates between states 
+                              than if we used raw crime counts.")
                                   )
+                                )
                          ),
                     
                  tabPanel("Demographics", # demographic breakdown data
@@ -150,7 +160,11 @@ ui <- navbarPage("Crime Rates by States",
                                                     )
                                            ) 
                                      ),
-                            tabPanel("Citations")
+                            tabPanel("Citations",
+                                     fluidRow(
+                                       p("Our data was taken from the Federal Bureau of Investigation Crime Data Explorer Page. 
+                                         All of the data are available to public.")
+                                     ))
                           )
                  )
 
