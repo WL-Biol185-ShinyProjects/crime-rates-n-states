@@ -1,0 +1,57 @@
+---
+title: "Untitled"
+author: "Leah Jackson"
+date: "11/17/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+aggregate_edited <- readRDS("individual_offense.RDS")
+```
+
+```{r}
+count_df1 <- aggregate_edited %>% 
+    group_by(sex, race, state_name) %>%
+    count(offense_type) %>%
+  filter(offense_type == "Aggravated Assault") #input$OffenseType
+View(count_df1)
+```
+
+```{r}
+ggplot(    data= count_df1, 
+             aes(   x= sex, 
+                    y= n)) +
+        geom_bar(stat="identity")
+
+ggplot(    data= count_df1, 
+             aes(   x= race, 
+                    y= n)) +
+        geom_bar(stat="identity")
+
+ggplot(    data= count_df1, 
+             aes(   x= state_name, 
+                    y= n)) +
+        geom_bar(stat="identity")
+```
+
+```{r}
+ count_df2 <- aggregate_edited %>% 
+    filter (aggregate_edited$offense_type %in% "Aggravated Assault") %>% 
+    count(offense_type, sex)
+View(count_df2)
+```
+
+```{r}
+ggplot(    data= count_df2, 
+             aes(   x= sex, 
+                    y= n)) +
+        geom_bar(stat="identity")
+```
+

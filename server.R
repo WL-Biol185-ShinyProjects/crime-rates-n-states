@@ -18,7 +18,7 @@ function(input, output) {
     print(input$crime_radio)
       
       pal <- colorNumeric("Purples", NULL)
-    map<-
+    map <-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
       addTiles() %>%
@@ -42,44 +42,24 @@ function(input, output) {
                 title        = "Crime Percentage",
                 labFormat    = labelFormat(suffix = "%"))
   })    
-
- 
     
     # DEMOGRAPHICS creating bar graph
     
     output$demographic_bar <- renderPlot({
       
-      #aggregate_edited_filtered <- aggregate_edited %>% 
-       #filter (                   aggregate_edited$offense_type %in% 
-                                     #input$OffenseType)
-      
-    # count <- aggregate_edited %>%
-        #group_by(input$RaceSexState, input$OffenseType) %>%
-        #summarise(input$OffenseType == n()) %>%
-        #filter(offense_type == input$OffenseType)
-      #count <- NULL # only show where it is TRUE to count
-      
-      #count_df <- aggregate_edited %>%
-       # group_by(input$RaceSexState, offense_type) %>%
-        #summarise(count = n())
-      
-      #hieu 
-      #female <- aggregate_edited %>%
-        #group_by(offense_type, sex) %>%
-        #summarise(female_count = n()) %>%
-        #filter(sex == "male")
-      #female$sex <- NULL
-      #View(female)
-      
-      #choosen_count <- count(aggregate_edited, input$OffenseType, input$RaceSexState)
-      
       count_df <- aggregate_edited %>% 
         filter (aggregate_edited$offense_type %in% input$OffenseType) %>% 
         count(offense_type, input$RaceSexState)
       
-      ggplot(    data= count_df, 
-             aes(   x= input$RaceSexState, 
-                    y= n)) +
+      #count_df <- aggregate_edited %>% 
+        #group_by(sex, race, state_name) %>%
+        #count(offense_type) %>%
+        #filter(offense_type == input$OffenseType) 
+
+      ggplot( data         = count_df, 
+              aes_string(x = input$RaceSexState, 
+                         y = "n"
+                        )) +
         geom_bar(stat="identity")
       
       # theme(legend.position = "bottom")
@@ -108,4 +88,3 @@ function(input, output) {
     })
   })
 }
-  

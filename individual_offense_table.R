@@ -53,3 +53,4 @@ aggregate_edited <- aggregate_edited %>%
 
 writeRDS(aggregate_edited,"individual_offense.RDS", row.names = TRUE)
 saveRDS("individual_offense.RDS")
+
