@@ -15,10 +15,19 @@ function(input, output) {
     #merge data frame into states
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
     
-    print(input$crime_radio)
-      pal <- colorNumeric("Purples", NULL)
-    map <-
-      pal <- colorNumeric("viridis", NULL)
+    if(input$crime_radio == "percent_of_shoplifting")
+          {pal <- colorNumeric("Purples", NULL)}
+    
+    if(input$crime_radio == "percent_of_simple_assault")
+          {pal <- colorNumeric("Reds", NULL)}
+    
+    if(input$crime_radio == "percent_of_drug_and_narcotic_violations")
+          {pal <- colorNumeric("Greens", NULL)}
+    
+    if(input$crime_radio == "percent_of_burglary")
+          {pal <- colorNumeric("Blues", NULL)}
+    
+    
     map<-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
