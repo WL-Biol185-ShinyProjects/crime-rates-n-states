@@ -64,9 +64,8 @@ function(input, output) {
               aes_string(x = input$RaceSexState, 
                          y = "n"
                         )) +
-        geom_bar()
+        geom_bar(stat = "identity")
       
-      #stat="identity"
       # theme(legend.position = "bottom")
       # sort from greatest to least
     })
