@@ -8,7 +8,6 @@ library(leaflet)
 state_map  <- rgdal::readOGR("states.geo.json")
 summary_table <- read.csv("summary_table_folder/summary_table.csv")
 aggregate_edited <- readRDS("individual_offense.RDS")
-aggregate_edited$offense_type <- fct_explicit_na(aggregate_edited$offense_type)
 
 function(input, output) {
   output$crime_map <- renderLeaflet({
@@ -58,12 +57,12 @@ function(input, output) {
     output$demographic_bar <- renderPlot({
       
       count_df <- aggregate_edited %>% 
-        filter(aggregate_edited$offense_type %in% !!input$OffenseType) %>% 
+        filter(offense_type %in% !!input$OffenseType) %>% 
         count(offense_type, !!input$RaceSexState)
 
       ggplot(data         = count_df, 
               aes_string(x = input$RaceSexState, 
-                         y = "n"
+                         y = n
                         )) +
         geom_bar(stat="identity")
 

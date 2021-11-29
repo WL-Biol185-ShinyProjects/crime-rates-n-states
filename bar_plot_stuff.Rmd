@@ -45,6 +45,9 @@ ggplot(    data= count_df1,
  count_df2 <- aggregate_edited %>% 
     filter (aggregate_edited$offense_type %in% "Aggravated Assault") %>% 
     count(offense_type, sex)
+```
+
+```{r}
 View(count_df2)
 ```
 
@@ -55,3 +58,36 @@ ggplot(    data= count_df2,
         geom_bar(stat="identity")
 ```
 
+```{r}
+ count_df3 <- aggregate_edited %>% 
+    filter (aggregate_edited$offense_type %in% "") %>% 
+    count(offense_type, state_name)
+```
+
+```{r}
+View(count_df3)
+```
+
+```{r}
+ggplot(    data= count_df3, 
+             aes(   x= state_name, 
+                    y= n)) +
+        geom_bar(stat="identity")
+```
+
+```{r}
+ count_df4 <- aggregate_edited %>% 
+    filter (aggregate_edited$offense_type %in% "Aggravated Assault") %>% 
+    count(offense_type, race)
+```
+
+```{r}
+View(count_df4)
+```
+
+```{r}
+ggplot(    data= count_df4, 
+             aes(   x= race, 
+                    y= n)) +
+        geom_bar(stat="identity")
+```
