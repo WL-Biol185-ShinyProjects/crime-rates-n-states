@@ -60,7 +60,7 @@ ggplot(    data= count_df2,
 
 ```{r}
  count_df3 <- aggregate_edited %>% 
-    filter (aggregate_edited$offense_type %in% "") %>% 
+    filter (aggregate_edited$offense_type %in% "Aggrevated Assault") %>% 
     count(offense_type, state_name)
 ```
 
@@ -77,7 +77,7 @@ ggplot(    data= count_df3,
 
 ```{r}
  count_df4 <- aggregate_edited %>% 
-    filter (aggregate_edited$offense_type %in% "Aggravated Assault") %>% 
+    filter (aggregate_edited$offense_type %in% "Shoplifting") %>% 
     count(offense_type, race)
 ```
 
