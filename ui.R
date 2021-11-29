@@ -5,6 +5,11 @@ library(shinydashboard)
 ui <- navbarPage("Crime Rates by States",
                 # tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
                          #),
+                
+                tabPanel("Home", 
+                         fluidRow(
+                           p("Welcome to our page. We are analyzing the FBI crime data in 2019.")
+                         )),
                  
                  tabPanel("Map", # maps
                           fluidRow(
