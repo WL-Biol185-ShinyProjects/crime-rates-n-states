@@ -41,7 +41,7 @@ ui <- navbarPage("Crime Rates by States",
                                sidebarPanel(
                                  selectizeInput("OffenseType", 
                                                 label = "Choose a Offense Type",
-                                                multiple = TRUE,
+                                                multiple = FALSE,
                                                 choices = c( "Illegal Entry into the United States"      = 'Illegal Entry into the United States',
                                                              "False Citizenship"                         = 'False Citizenship',
                                                              "Smuggling Aliens"                          = 'Smuggling Aliens',
@@ -167,9 +167,3 @@ ui <- navbarPage("Crime Rates by States",
                                      ))
                           )
                  )
-
-                        
-
-
-
-

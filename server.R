@@ -8,6 +8,7 @@ library(leaflet)
 state_map  <- rgdal::readOGR("states.geo.json")
 summary_table <- read.csv("summary_table_folder/summary_table.csv")
 aggregate_edited <- readRDS("individual_offense.RDS")
+aggregate_edited$offense_type <- fct_explicit_na(aggregate_edited$offense_type)
 
 function(input, output) {
   output$crime_map <- renderLeaflet({
@@ -43,20 +44,15 @@ function(input, output) {
                 labFormat    = labelFormat(suffix = "%"))
   })    
     
-    # DEMOGRAPHICS creating bar graph
+    # DEMOGRAPHICS bar graph
     
     output$demographic_bar <- renderPlot({
       
       count_df <- aggregate_edited %>% 
-        filter (aggregate_edited$offense_type %in% input$OffenseType) %>% 
-        count(offense_type, input$RaceSexState)
-      
-      #count_df <- aggregate_edited %>% 
-        #group_by(sex, race, state_name) %>%
-        #count(offense_type) %>%
-        #filter(offense_type == input$OffenseType) 
+        filter(aggregate_edited$offense_type %in% !!input$OffenseType) %>% 
+        count(offense_type, !!input$RaceSexState)
 
-      ggplot( data         = count_df, 
+      ggplot(data         = count_df, 
               aes_string(x = input$RaceSexState, 
                          y = "n"
                         )) +
@@ -64,8 +60,6 @@ function(input, output) {
 
       # theme(legend.position = "bottom")
       # sort from greatest to least
-      # choose custom color
-        #theme(legend.position = "bottom")
     })
 
 #BIOGRAPHIES 
