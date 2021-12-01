@@ -19,19 +19,10 @@ aggregate_edited <- readRDS("individual_offense.RDS")
 
 
 ```{r}
-newdt<- aggregate_edited %>% pivot_longer(
-  cols = offense_type,
-  values_to = "count"
-)
-
-View(newdt)
-```
-
-```{r}
 count_df1 <- aggregate_edited %>% 
     group_by(sex, race, state_name) %>%
     count(offense_type) %>%
-  filter(offense_type == "Aggravated Assault") #input$OffenseType
+  filter(offense_type %in% "Aggravated Assault") #input$OffenseType
 View(count_df1)
 ```
 
