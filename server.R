@@ -56,9 +56,14 @@ function(input, output) {
     
     output$demographic_bar <- renderPlot({
       
+      #count_df <- aggregate_edited %>% 
+        #filter(offense_type %in% !!input$OffenseType) %>% 
+        #count(offense_type, !!input$RaceSexState)
+      
       count_df <- aggregate_edited %>% 
-        filter(offense_type %in% !!input$OffenseType) %>% 
-        count(offense_type, !!input$RaceSexState)
+        group_by(sex, race, state_name) %>%
+        count(offense_type) %>%
+        filter(offense_type == !!input$OffenseType)
 
       ggplot(data         = count_df, 
               aes_string(x = input$RaceSexState, 

@@ -13,7 +13,18 @@ knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(dplyr)
 library(tidyverse)
+library(tidyr)
 aggregate_edited <- readRDS("individual_offense.RDS")
+```
+
+
+```{r}
+newdt<- aggregate_edited %>% pivot_longer(
+  cols = offense_type,
+  values_to = "count"
+)
+
+View(newdt)
 ```
 
 ```{r}
@@ -59,7 +70,6 @@ ggplot(    data= count_df2,
 ```
 
 ```{r}
-count_df3 <- droplevels(count_df3)
  count_df3 <- aggregate_edited %>% 
     filter (aggregate_edited$offense_type %in% "Aggrevated Assault") %>% 
     count(offense_type, state_name)
