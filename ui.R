@@ -3,12 +3,17 @@ library(shiny)
 library(shinydashboard)
 #library(bslib)
 
-ui <- navbarPage("Crime Rates by States",
+ui <- navbarPage( 
+                 #theme = bs_theme(version    = 4, 
+                                  #bootswatch = "minty"
+                                  #),
+
+                "Crime Rates by States",
                 
                 tabPanel(div("Home", 
                              img(src    = "home.png", 
-                                 height = 15, 
-                                 width  = 15,)
+                                 height = 19, 
+                                 width  = 19,)
                              ),
     
                          fluidRow(
@@ -17,7 +22,7 @@ ui <- navbarPage("Crime Rates by States",
                          ),
                  
                  tabPanel(div("Maps", 
-                              img(src    = "real_map.png", 
+                              img(src    = "map.png", 
                                   height = 15, 
                                   width  = 25,)
                             ),
@@ -49,7 +54,12 @@ ui <- navbarPage("Crime Rates by States",
                                 )
                          ),
                     
-                 tabPanel("Demographics", # demographic breakdown data
+                 tabPanel(div("Demographics", 
+                              img(src    = "man_woman.png", 
+                                  height = 15, 
+                                  width  = 20)
+                              ),
+                              
                            fluidPage(
                              titlePanel("Demographic Breakdowns"),
                              sidebarLayout(
@@ -162,23 +172,26 @@ ui <- navbarPage("Crime Rates by States",
                  navbarMenu("More",
                             tabPanel("About the Creators",
                                   fluidPage(
-                                    #theme = bs_theme(version = 4, bootswatch = "minty"),
                                        titlePanel("About the Creators"),
                                        sidebarLayout(column(3,
-                                         sidebarPanel( 
+                                          sidebarPanel( 
                                                        actionButton("natasha", label = "Natasha Gengler"),
                                                        actionButton("leah",    label = "Leah Jackson"),
-                                                       actionButton("hieu",    label = "Hieu Nguyen"))
+                                                       actionButton("hieu",    label = "Hieu Nguyen")
+                                                       )
                                                             ),
                                          mainPanel(    textOutput("selected_var")
                                                   )
                                                     )
                                            ) 
                                      ),
+                            
                             tabPanel("Citations",
                                      fluidRow(
                                        p("Our data was taken from the Federal Bureau of Investigation Crime Data Explorer Page. 
-                                         All of the data are available to public.")
-                                     ))
+                                         All of the data are available to public."
+                                         )
+                                       )
+                                     )
                           )
                  )
