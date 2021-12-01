@@ -1,17 +1,27 @@
 library(leaflet)
 library(shiny)
 library(shinydashboard)
+#library(bslib)
 
 ui <- navbarPage("Crime Rates by States",
-                # tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
-                         #),
                 
-                tabPanel("Home", 
+                tabPanel(div("Home", 
+                             img(src    = "home.png", 
+                                 height = 15, 
+                                 width  = 15,)
+                             ),
+    
                          fluidRow(
-                           p("Welcome to our page. We are analyzing the FBI crime data in 2019.")
-                         )),
+                           p("Welcome to our page. We are analyzing crime data from 2019 reported to the FBI through the National Incident-Based Reporting System (NIBRS) by different precincts around the country. On our page, you'll find an interactive map with rates of different crimes by state and an interactive graph where you can see crime breakdown by demographic.")
+                                 )
+                         ),
                  
-                 tabPanel("Map", # maps
+                 tabPanel(div("Maps", 
+                              img(src    = "real_map.png", 
+                                  height = 15, 
+                                  width  = 25,)
+                            ),
+                          
                           fluidRow(
                             p("Look at a map of crimes in the USA."),
                            
