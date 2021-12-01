@@ -66,8 +66,6 @@ function(input, output) {
                          y = "n"
                         )) +
         geom_bar(stat = "identity")
-      
-      # theme(legend.position = "bottom")
       # sort from greatest to least
     })
 
