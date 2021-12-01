@@ -1,17 +1,32 @@
 library(leaflet)
 library(shiny)
 library(shinydashboard)
+#library(bslib)
 
-ui <- navbarPage("Crime Rates by States",
-                # tabPanel( "Home" #a summary of project, can highlight this in a color and make it 'Home'
-                         #),
+ui <- navbarPage( 
+                 #theme = bs_theme(version    = 4, 
+                                  #bootswatch = "minty"
+                                  #),
+
+                "Crime Rates by States",
                 
-                tabPanel("Home", 
+                tabPanel(div("Home", 
+                             img(src    = "home.png", 
+                                 height = 19, 
+                                 width  = 19,)
+                             ),
+    
                          fluidRow(
-                           p("Welcome to our page. We are analyzing the FBI crime data in 2019.")
-                         )),
+                           p("Welcome to our page. We are analyzing crime data from 2019 reported to the FBI through the National Incident-Based Reporting System (NIBRS) by different precincts around the country. On our page, you'll find an interactive map with rates of different crimes by state and an interactive graph where you can see crime breakdown by demographic.")
+                                 )
+                         ),
                  
-                 tabPanel("Map", # maps
+                 tabPanel(div("Maps", 
+                              img(src    = "map.png", 
+                                  height = 15, 
+                                  width  = 25,)
+                            ),
+                          
                           fluidRow(
                             p("Look at a map of crimes in the USA."),
                            
@@ -39,7 +54,12 @@ ui <- navbarPage("Crime Rates by States",
                                 )
                          ),
                     
-                 tabPanel("Demographics", # demographic breakdown data
+                 tabPanel(div("Demographics", 
+                              img(src    = "man_woman.png", 
+                                  height = 15, 
+                                  width  = 20)
+                              ),
+                              
                            fluidPage(
                              titlePanel("Demographic Breakdowns"),
                              sidebarLayout(
@@ -152,23 +172,26 @@ ui <- navbarPage("Crime Rates by States",
                  navbarMenu("More",
                             tabPanel("About the Creators",
                                   fluidPage(
-                                    #theme = bs_theme(version = 4, bootswatch = "minty"),
                                        titlePanel("About the Creators"),
                                        sidebarLayout(column(3,
-                                         sidebarPanel( 
+                                          sidebarPanel( 
                                                        actionButton("natasha", label = "Natasha Gengler"),
                                                        actionButton("leah",    label = "Leah Jackson"),
-                                                       actionButton("hieu",    label = "Hieu Nguyen"))
+                                                       actionButton("hieu",    label = "Hieu Nguyen")
+                                                       )
                                                             ),
                                          mainPanel(    textOutput("selected_var")
                                                   )
                                                     )
                                            ) 
                                      ),
+                            
                             tabPanel("Citations",
                                      fluidRow(
                                        p("Our data was taken from the Federal Bureau of Investigation Crime Data Explorer Page. 
-                                         All of the data are available to public.")
-                                     ))
+                                         All of the data are available to public."
+                                         )
+                                       )
+                                     )
                           )
                  )
