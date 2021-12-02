@@ -1,14 +1,13 @@
 library(leaflet)
 library(shiny)
 library(shinydashboard)
-#library(bslib)
+library(bslib)
 
-ui <- navbarPage( 
-                 #theme = bs_theme(version    = 4, 
-                                  #bootswatch = "minty"
-                                  #),
-
-                "Crime Rates by States",
+ui <- navbarPage(
+  
+    theme = bs_theme(version = 4, bootswatch = "minty"),
+  
+          "Crime Rates by States",
                 
                 tabPanel(div("Home", 
                              img(src    = "home.png", 
