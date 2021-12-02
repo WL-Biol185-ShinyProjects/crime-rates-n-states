@@ -17,7 +17,8 @@ ui <- navbarPage(
                              ),
     
                          fluidRow(
-                           p("Welcome to our page. We are analyzing crime data from 2019 reported to the FBI through the National Incident-Based Reporting System (NIBRS) by different precincts around the country. On our page, you'll find an interactive map with rates of different crimes by state and an interactive graph where you can see crime breakdown by demographic.")
+                           p("Welcome to our page! This site analyzes crime data for different precincts around the United States reported to the FBI through the National Incident-Based Reporting System (NIBRS) in 2019. 
+Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!")
                                  )
                          ),
                  
@@ -28,8 +29,8 @@ ui <- navbarPage(
                             ),
                           
                           fluidRow(
-                            p("Look at a map of crimes in the USA."),
-                           
+                            titlePanel("Mapping Crime"),
+                            p("Which states have the highest rate of your chosen crime?"),
                             column(10,
                                    radioButtons("crime_radio", h3("Crime Options"),
                                                 choices = list("Shoplifting"                  = "percent_of_shoplifting", 
@@ -61,11 +62,12 @@ ui <- navbarPage(
                               ),
                               
                            fluidPage(
-                             titlePanel("Demographic Breakdowns"),
+                             titlePanel("Demographic Breakdown by Crime"),
+                             p("Which sex, state, or race has the highest rate of your chosen crime?"),
                              sidebarLayout(
                                sidebarPanel(
                                  selectizeInput("OffenseType", 
-                                                label = "Choose a Offense Type",
+                                                label = "Choose an Offense Type",
                                                 multiple = FALSE,
                                                 choices = c( "False Pretenses/Swindle/Confidence Game"   = 'False Pretenses/Swindle/Confidence Game',
                                                              "Statutory Rape"                            = 'Statutory Rape',
@@ -131,11 +133,11 @@ ui <- navbarPage(
                                                              "All Other Offenses"                        = 'All Other Offenses')
                                             ),
                                  selectInput("RaceSexState",
-                                             label    = "Choose a Sex, Race, or State",
+                                             label    = "Compare by Sex, State, or Race",
                                              multiple = FALSE,
-                                             choices  = c("Race"  = 'race', 
-                                                          "Sex"   = 'sex', 
-                                                          "State" = 'state_name')
+                                             choices  = c("Sex"   = 'sex', 
+                                                          "State" = 'state_name',
+                                                          "Race"  = 'race')
                                             )
                                           ),
                              mainPanel(

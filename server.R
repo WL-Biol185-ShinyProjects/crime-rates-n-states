@@ -66,7 +66,9 @@ function(input, output) {
                          y = "n",
                          fill= input$RaceSexState
                         )) +
-        geom_bar(stat = "identity")
+        geom_bar(stat = "identity") +
+        labs(y= "Number of Arrests", x= NULL, title= NULL) +
+        theme_minimal()
       # sort from greatest to least
     })
 
