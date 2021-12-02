@@ -167,7 +167,7 @@ Here, you'll discover an interactive state map with rates of different crimes an
                             
                             tabPanel("Citations",
                                      fluidRow(
-                                       p("Our data was taken from the Federal Bureau of Investigation Crime Data Explorer Page. 
+                                       p("Our data are from the Federal Bureau of Investigation Crime Data Explorer Page. 
                                          All of the data are available to public."
                                          )
                                        )
