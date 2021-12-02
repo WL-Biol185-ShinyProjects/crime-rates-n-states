@@ -145,7 +145,7 @@ Here, you'll discover an interactive state map with rates of different crimes an
                                       ),
                                           )
                                   ),
-                          p("FBI Crime Data reports the offense and offender's sex and race for crime incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization."),
+                          p("Where is this information from? FBI Crime Data reports the offense and offender's sex and race for crime incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization."),
                           ),
               
                  navbarMenu("More",
