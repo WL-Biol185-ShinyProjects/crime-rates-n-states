@@ -27,6 +27,34 @@ View(count_df1)
 ```
 
 ```{r}
+aggregate_edited$age <- as.numeric(aggregate_edited$age)
+count_df9 <- aggregate_edited %>% 
+    group_by(age) %>%
+    count(offense_type) %>%
+  filter(offense_type %in% "Shoplifting") #input$OffenseType
+View(count_df9)
+```
+
+```{r}
+ggplot(    data= count_df9, 
+             aes(   x= age, 
+                    y= n)) +
+        geom_density(stat="identity")+
+      labs(y= "Number of Arrests", x= "Age", title= NULL) +
+geom_vline(aes(xintercept=median(n)),color="red", linetype="dashed", size=1) +
+  theme_minimal()
+```
+
+```{r}
+ggplot(    data= aggregate_edited, 
+             aes(age) 
+                    y= n)) +
+        geom_density(stat="identity")+
+      labs(y= "Number of Arrests", x= "Age", title= NULL) +
+  theme_minimal()
+```
+
+```{r}
 ggplot(    data= count_df1, 
              aes(   x= reorder(sex, -n), 
                     y= n)) +
@@ -40,7 +68,7 @@ ggplot(    data= count_df1,
 ggplot(    data= count_df1, 
              aes(   x= reorder(state_name, -n), 
                     y= n)) +
-        geom_bar(stat="identity")
+        geom_bar(stat="identity") +theme_minimal()
 ```
 
 ```{r}
