@@ -28,7 +28,7 @@ View(count_df1)
 
 ```{r}
 ggplot(    data= count_df1, 
-             aes(   x= sex, 
+             aes(   x= reorder(sex, -n), 
                     y= n)) +
         geom_bar(stat="identity")
 
@@ -38,7 +38,7 @@ ggplot(    data= count_df1,
         geom_bar(stat="identity")
 
 ggplot(    data= count_df1, 
-             aes(   x= state_name, 
+             aes(   x= reorder(state_name, -n), 
                     y= n)) +
         geom_bar(stat="identity")
 ```

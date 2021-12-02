@@ -62,8 +62,9 @@ function(input, output) {
         filter(offense_type %in% !!input$OffenseType)
 
       ggplot(data          = count_df, 
-              aes_string(x = input$RaceSexState, 
-                         y = "n"
+              aes_string(x = input$RaceSexState,
+                         y = "n",
+                         fill= input$RaceSexState
                         )) +
         geom_bar(stat = "identity")
       # sort from greatest to least
