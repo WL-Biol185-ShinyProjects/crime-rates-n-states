@@ -55,23 +55,20 @@ function(input, output) {
     # DEMOGRAPHICS bar graph
     
     output$demographic_bar <- renderPlot({
-      
-      #count_df <- aggregate_edited %>% 
-        #filter(offense_type %in% !!input$OffenseType) %>% 
-        #count(offense_type, !!input$RaceSexState)
-      
+
       count_df <- aggregate_edited %>% 
         group_by(sex, race, state_name) %>%
         count(offense_type) %>%
-        filter(offense_type == !!input$OffenseType)
+        filter(offense_type %in% !!input$OffenseType)
 
-      ggplot(data         = count_df, 
-              aes_string(x = input$RaceSexState, 
-                         y = "n"
+      ggplot(data          = count_df, 
+              aes_string(x = input$RaceSexState,
+                         y = "n",
+                         fill= input$RaceSexState
                         )) +
-        geom_bar(stat = "identity")
-      
-      # theme(legend.position = "bottom")
+        geom_bar(stat = "identity") +
+        labs(y= "Number of Arrests", x= NULL, title= NULL) +
+        theme_minimal()
       # sort from greatest to least
     })
 

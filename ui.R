@@ -16,7 +16,8 @@ ui <- navbarPage(
                              ),
     
                          fluidRow(
-                           p("Welcome to our page. We are analyzing crime data from 2019 reported to the FBI through the National Incident-Based Reporting System (NIBRS) by different precincts around the country. On our page, you'll find an interactive map with rates of different crimes by state and an interactive graph where you can see crime breakdown by demographic.")
+                           p("Welcome to our page! This site analyzes crime data for different precincts around the United States reported to the FBI through the National Incident-Based Reporting System (NIBRS) in 2019. 
+Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!")
                                  )
                          ),
                  
@@ -27,8 +28,8 @@ ui <- navbarPage(
                             ),
                           
                           fluidRow(
-                            p("Look at a map of crimes in the USA."),
-                           
+                            titlePanel("Mapping Crime"),
+                            p("Which states have the highest rate of your chosen crime?"),
                             column(10,
                                    radioButtons("crime_radio", h3("Crime Options"),
                                                 choices = list("Shoplifting"                  = "percent_of_shoplifting", 
@@ -60,32 +61,15 @@ ui <- navbarPage(
                               ),
                               
                            fluidPage(
-                             titlePanel("Demographic Breakdowns"),
+                             titlePanel("Demographic Breakdown by Crime"),
+                             p("Which sex, state, or race has the highest rate of your chosen crime?"),
                              sidebarLayout(
                                sidebarPanel(
                                  selectizeInput("OffenseType", 
-                                                label = "Choose a Offense Type",
+                                                label = "Choose an Offense Type",
                                                 multiple = FALSE,
-                                                choices = c( "Illegal Entry into the United States"      = 'Illegal Entry into the United States',
-                                                             "False Citizenship"                         = 'False Citizenship',
-                                                             "Smuggling Aliens"                          = 'Smuggling Aliens',
-                                                             "Re-entry after Deportation"                = 'Re-entry after Deportation',
-                                                             "Failure to Register as a Sex Offender"     = 'Failure to Register as a Sex Offender',
-                                                             "Harboring Escapee/Concealing from Arrest"  = 'Harboring Escapee/Concealing from Arrest',
-                                                             "Flight to Avoid Prosecution"               = 'Flight to Avoid Prosecution',
-                                                             "Flight to Avoid Deportation"               = 'Flight to Avoid Deportation',
-                                                             "Violation of National Firearm Act of 1934" = 'Violation of National Firearm Act of 1934',
-                                                             "Weapons of Mass Destruction"               = 'Weapons of Mass Destruction',
-                                                             "Explosives Violation"                      = 'Explosives Violation',
-                                                             "Import Violations"                         = 'Import Violations',
-                                                             "Export Violations"                         = 'Export Violations',
-                                                             "Federal Liquor Offenses"                   = 'Federal Liquor Offenses',
-                                                             "Federal Tobacco Offenses"                  = 'Federal Tobacco Offenses',
-                                                             "Wildlife Trafficking"                      = 'Wildlife Trafficking',
-                                                             "Not Specified"                             = 'Not Specified',
-                                                             "Justifiable Homicide"                      = 'Justifiable Homicide',
-                                                             "False Pretenses/Swindle/Confidence Game"   = 'False Pretenses/Swindle/Confidence Game',
-                                                             "Statutory Rape"                            = 'False Pretenses/Swindle/Confidence Game',
+                                                choices = c( "False Pretenses/Swindle/Confidence Game"   = 'False Pretenses/Swindle/Confidence Game',
+                                                             "Statutory Rape"                            = 'Statutory Rape',
                                                              "Sexual Assault With An Object"             = 'Sexual Assault With An Object',
                                                              "Destruction/Damage/Vandalism of Property"  = 'Destruction/Damage/Vandalism of Property',
                                                              "Family Offenses, Nonviolent"               = 'Family Offenses, Nonviolent',
@@ -138,34 +122,29 @@ ui <- navbarPage(
                                                              "Identity Theft"                            = 'Identity Theft',
                                                              "Hacking/Computer Invasion"                 = 'Hacking/Computer Invasion',
                                                              "Animal Cruelty"                            = 'Animal Cruelty',
-                                                             "Failure to Appear"                         = 'Failure to Appear',
-                                                             "Federal Resource Violations"               = 'Federal Resource Violations',
-                                                             "Perjury"                                   = 'Perjury',
-                                                             "Treason"                                   = 'Treason',
-                                                             "Espionage"                                 = 'Espionage',
                                                              "Impersonation"                             = 'Impersonation',
                                                              "Simple Assault"                            = 'Simple Assault',
                                                              "Fondling"                                  = 'Fondling',
                                                              "Purchasing Prostitution"                   = 'Purchasing Prostitution',
-                                                             "Money Laundering"                          = 'Money Laundering',
                                                              "Rape"                                      = 'Rape',
                                                              "Theft From Coin-Operated Machine or Device" = 'Theft From Coin-Operated Machine or Device',
                                                              "Driving Under the Influence"               = 'Driving Under the Influence',
                                                              "All Other Offenses"                        = 'All Other Offenses')
                                             ),
                                  selectInput("RaceSexState",
-                                             label    = "Choose a Sex, Race, or State",
+                                             label    = "Compare by Sex, State, or Race",
                                              multiple = FALSE,
-                                             choices  = c("Race"  = 'race', 
-                                                          "Sex"   = 'sex', 
-                                                          "State" = 'state_name')
+                                             choices  = c("Sex"   = 'sex', 
+                                                          "State" = 'state_name',
+                                                          "Race"  = 'race')
                                             )
                                           ),
                              mainPanel(
                                plotOutput("demographic_bar")
                                       ),
                                           )
-                                  )
+                                  ),
+                          p("Where is this information from? FBI Crime Data reports the offense and offender's sex and race for crime incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization."),
                           ),
               
                  navbarMenu("More",
@@ -187,7 +166,7 @@ ui <- navbarPage(
                             
                             tabPanel("Citations",
                                      fluidRow(
-                                       p("Our data was taken from the Federal Bureau of Investigation Crime Data Explorer Page. 
+                                       p("Our data are from the Federal Bureau of Investigation Crime Data Explorer Page. 
                                          All of the data are available to public."
                                          )
                                        )
