@@ -82,7 +82,7 @@ function(input, output) {
   })
   observeEvent(input$leah, {
     output$biographies <- renderText({ 
-      "Leah is a senior Biology major"
+      "Howdy! Leah is a senior Biology major"
     })
     
   })
