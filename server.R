@@ -61,7 +61,11 @@ function(input, output) {
         count(offense_type) %>%
         filter(offense_type %in% !!input$OffenseType)
       
-      count_df_sorted <- mutatue(count_df, !!input$RaceSexState = factor(!!input$RaceSexState, levels= !!input$RaceSexState, ordered=TRUE))
+      count_df_sorted <- mutate(count_df, !!input$RaceSexState = factor(!!input$RaceSexState, 
+                                                                    levels = !!input$RaceSexState, 
+                                                                   ordered = TRUE
+                                                                        )
+                                )
 
       ggplot(data          = count_df_sorted, 
               aes_string(x = input$RaceSexState,
