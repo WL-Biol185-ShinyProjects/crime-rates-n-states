@@ -131,8 +131,7 @@ ui <- shiny::navbarPage(
                                                              "Purchasing Prostitution"                   = 'Purchasing Prostitution',
                                                              "Rape"                                      = 'Rape',
                                                              "Theft From Coin-Operated Machine or Device" = 'Theft From Coin-Operated Machine or Device',
-                                                             "Driving Under the Influence"               = 'Driving Under the Influence',
-                                                             "All Other Offenses"                        = 'All Other Offenses')
+                                                             "Driving Under the Influence"               = 'Driving Under the Influence')
                                             ),
                                  selectInput("RaceSexState",
                                              label    = "Compare by Sex, State, or Race",
