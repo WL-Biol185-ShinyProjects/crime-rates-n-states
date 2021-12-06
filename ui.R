@@ -24,7 +24,13 @@ ui <- shiny::navbarPage(
                                     ),
                                   img(src    = "nibrs.jpg", 
                                       height = 300,
-                                      )
+                                      ),
+                                  br(),
+                                  br(),
+                                  p("Check out how the data was classified below:"),
+                                  img(src    = "nibrs_data_architecture.jpg", 
+                                      height = 900,
+                                  )
                                   )
                                   )
                            
