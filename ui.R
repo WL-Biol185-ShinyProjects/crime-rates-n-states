@@ -1,6 +1,7 @@
 library(leaflet)
 library(shiny)
 library(shinydashboard)
+library(shinythemes)
 
 ui <- shiny::navbarPage(
   
