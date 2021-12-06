@@ -1,7 +1,6 @@
 library(leaflet)
 library(shiny)
 library(shinydashboard)
-library(bslib)
 
 ui <- shiny::navbarPage(
   
@@ -157,18 +156,30 @@ ui <- shiny::navbarPage(
                                        titlePanel("About the Creators"),
                                            align = "center", 
                                            width = 12,
-                                       column(width = 3,
-                                              p("Hi, my name is Hieu Nguyen, Class of 2022, from Portland, OR. I am a neuroscience major and film minor. My passions include cooking, making videos, and singing. My favorite thing about this class is being able to construct representations of an unimaginably large data set. I’ve gained so much knowledge about the world through the interactive graphs that my group has made. My goal is to be a physician so I can help minority groups in the future. ")
-                                              ),
+                                       column(width = 4,
+                                              h3("Hieu Nguyen '22"),
+                                              img(src    = "hieu.jpg", 
+                                                  height = 300,
+                                                  ),
+                                              p("Hi, my name is Hieu Nguyen, Class of 2022, from Portland, OR. I am a Neuroscience major and Film & Visual Culture minor. My passions include cooking, making videos, and singing. My favorite thing about this class is being able to construct representations of an unimaginably large data set. I’ve gained so much knowledge about the world through the interactive graphs that my group has made. My goal is to be a physician so I can help minority groups in the future. 
+                                                ")
                                        
-                                       column(width = 3,
-                                              p("Howdy! My name is Leah Jackson, Class of 2022, from Savannah, GA. I am a Biology major and Film and Visual Culture minor. My passions are gardening and talking about film and media. My aspirations are to become a physician and serve underserved communities while educating others about their health. 
-")
+                                       column(width = 4,
+                                              h3("Leah Jackson '22"),
+                                              img(src    = "leah.jpg", 
+                                                  height = 300,
+                                              ),
+                                              p("Howdy! My name is Leah Jackson, Class of 2022, from Savannah, GA. I am a Biology major and Film and Visual Culture minor. My passions include sustainable efforts, gardening, cooking, and talking about film and media. I enjoy communicating individual and community-level relationships through data visualization. My aspiration is to become a physician that helps underserved communities and educates others about their health. 
+                                                ")
                                        ),
                                        
-                                       column(width = 3,
-                                              p("Hello! My name is Natasha “Tash” Gengler, Class of 2022, from Wilmington, DE. I’m a math major and creative writing minor. Some of my hobbies include DJing a radio show, vegetarian cooking, and thrift shopping. Coming from a background of absolutely no coding experience, this class has been so helpful in learning how to code for data presentation. In the future, I hope to work as a physician and research rare diseases.  
-")
+                                       column(width = 4,
+                                              h3("Natasha 'Tash' Gengler '22"),
+                                              img(src    = "natasha.jpg", 
+                                                  height = 300,
+                                              ),
+                                              p("Hello! My name is Natasha “Tash” Gengler, Class of 2022, from Wilmington, DE. I’m a Math major and Creative Writing minor. Some of my hobbies include DJing a radio show, vegetarian cooking, and thrift shopping. Coming from a background of absolutely no coding experience, this class has been so helpful in learning how to code for data visualization, especially with large data sets. In the future, I hope to work as a physician with a focus on rare disease research.
+                                                ")
                                        )
                                        
                                        
