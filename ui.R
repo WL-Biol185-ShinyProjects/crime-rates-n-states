@@ -155,18 +155,24 @@ ui <- shiny::navbarPage(
                             tabPanel("About the Creators",
                                   fluidPage(
                                        titlePanel("About the Creators"),
-                                       sidebarLayout(column(3,
-                                          sidebarPanel( 
-                                                       actionButton("natasha", label = "Natasha Gengler"),
-                                                       actionButton("leah",    label = "Leah Jackson"),
-                                                       actionButton("hieu",    label = "Hieu Nguyen")
-                                                       )
-                                                            ),
-                                         mainPanel(    textOutput("selected_var")
-                                                  )
-                                                    )
-                                           ) 
-                                     ),
+                                           align = "center", 
+                                           width = 12,
+                                       column(width = 4,
+                                              p("Hieu")
+                                              ),
+                                       
+                                       column(width = 4,
+                                              p("Leah")
+                                       ),
+                                       
+                                       column(width = 4,
+                                              p("Tash")
+                                       )
+                                       
+                                       
+                                       ) 
+                                  ),
+                                      
                             
                             tabPanel("Citations",
                                      fluidRow(

@@ -71,24 +71,4 @@ function(input, output) {
         theme_minimal()
       # sort from greatest to least
     })
-
-#BIOGRAPHIES 
- 
-  observeEvent(input$natasha, {
-    output$biographies <- renderText({ 
-      "Natasha is a senior math major"
-  })
-              
-  })
-  observeEvent(input$leah, {
-    output$biographies <- renderText({ 
-      "Leah is a senior Biology major"
-    })
-    
-  })
-  observeEvent(input$hieu, {
-    output$biographies <- renderText({ 
-      "Hieu is a senior neuroscience major"
-    })
-  })
 }
