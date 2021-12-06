@@ -191,7 +191,7 @@ ui <- shiny::navbarPage(
                             tabPanel("Citations",
                                      fluidRow(
                                        p("Our data are from the Federal Bureau of Investigation Crime Data Explorer Page. 
-                                         All of the data are available to public."
+                                         All of the data are available to public. 'https://crime-data-explorer.app.cloud.gov/pages/downloads'"
                                          )
                                        )
                                      )
