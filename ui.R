@@ -3,9 +3,9 @@ library(shiny)
 library(shinydashboard)
 library(bslib)
 
-ui <- navbarPage(
+ui <- shiny::navbarPage(
   
-    theme = bs_theme(version = 4, bootswatch = "minty"),
+    theme = shinytheme("united"),
   
           "Crime Rates by States",
                 
@@ -16,9 +16,13 @@ ui <- navbarPage(
                              ),
     
                          fluidRow(
-                           p("Welcome to our page! This site analyzes crime data for different precincts around the United States reported to the FBI through the National Incident-Based Reporting System (NIBRS) in 2019. 
-Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!")
-                                 )
+                           column(10, 
+                                    p("Welcome to our page! This site analyzes crime data for different precincts around the United States reported to the FBI through the National Incident-Based Reporting System (NIBRS) in 2019. 
+                                 Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
+                                    )
+                                  )
+                                  )
+                           
                          ),
                  
                  tabPanel(div("Maps", 

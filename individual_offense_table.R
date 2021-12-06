@@ -32,7 +32,7 @@ aggregate$offense_type <- offense_type[as.character(aggregate$OFFENSE_TYPE_ID)]
 #replace sex code data
 sex           <- c("Male", "Female")
 names(sex)    <- c("M", "F")
-aggregate$sex <- sex[(aggregate$SEX_CODE)]
+aggregate$sex <- sex[aggregate$SEX_CODE]
 
 #replace resident code data
 resident           <- c("Resident", "Non-resident")
