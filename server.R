@@ -60,8 +60,10 @@ function(input, output) {
         group_by(sex, race, state_name) %>%
         count(offense_type) %>%
         filter(offense_type %in% !!input$OffenseType)
+      
+      count_df_sorted <- mutatue(count_df, !!input$RaceSexState = factor(!!input$RaceSexState, levels= !!input$RaceSexState, ordered=TRUE))
 
-      ggplot(data          = count_df, 
+      ggplot(data          = count_df_sorted, 
               aes_string(x = input$RaceSexState,
                          y = "n",
                          fill= input$RaceSexState
@@ -69,6 +71,5 @@ function(input, output) {
         geom_bar(stat = "identity") +
         labs(y= "Number of Arrests", x= NULL, title= NULL) +
         theme_minimal()
-      # sort from greatest to least
-    })
+    }) 
 }
