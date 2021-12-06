@@ -17,9 +17,14 @@ ui <- shiny::navbarPage(
     
                          fluidRow(
                            column(10, 
-                                    p("Welcome to our page! This site analyzes crime data for different precincts around the United States reported to the FBI through the National Incident-Based Reporting System (NIBRS) in 2019. 
+                                    align = "center",
+                                    h3("Welcome to our page!"),
+                                    p("This site analyzes crime data for different precincts around the United States reported to the FBI through the National Incident-Based Reporting System (NIBRS) in 2019. 
                                  Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
-                                    )
+                                    ),
+                                  img(src    = "nibrs.jpg", 
+                                      height = 300,
+                                      )
                                   )
                                   )
                            
