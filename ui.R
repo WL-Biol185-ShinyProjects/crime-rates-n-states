@@ -17,7 +17,7 @@ ui <- shiny::navbarPage(
                          fluidRow(
                            column(10, 
                                     p("Welcome to our page! This site analyzes crime data for different precincts around the United States reported to the FBI through the National Incident-Based Reporting System (NIBRS) in 2019. 
-                                 Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
+                                 Here, you'll discover an interactive state map with rates of different crimes and an interactive graph bar where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
                                     )
                                   )
                                   )
@@ -48,10 +48,10 @@ ui <- shiny::navbarPage(
                             br(),
                             br(),
                             box(width = 12,
-                            p("Alaska, California, Florida, New Jersey, and New York did not report any of their crimes to the FBI database. 
+                            p("Where is this information from? States report offenses to the FBI. However, Alaska, California, Florida, New Jersey, and New York did not report any of their crimes to the FBI. 
                               In addition, most states only reported a fraction of crimes to the FBI, with several precincts within each state 
-                              either choosing not to report directly to the FBI or using their own format. To navigate this problem, we calculated
-                              the percentage of each type of crime by state in order to more accurately compare the crime rates between states 
+                              either choosing not to report directly to the FBI or using their own format. To navigate these problems, we calculated
+                              the percentage of each offense type by state in order to more accurately compare the crime rates between states 
                               than if we used raw crime counts.")
                                   )
                                 )
