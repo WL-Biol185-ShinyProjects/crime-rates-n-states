@@ -59,14 +59,14 @@ function(input, output) {
       count_df <- aggregate_edited %>% 
         group_by(sex, race, state_name) %>%
         count(offense_type) %>%
-        filter(offense_type %in% !!input$OffenseType)
+        filter(offense_type %in% !!input$offense_type)
       
     
 
       ggplot(data          = count_df, 
-              aes_string(x = input$RaceSexState,
+              aes_string(x = input$race_sex_state,
                          y = "n",
-                         fill= input$RaceSexState
+                         fill= input$race_sex_state
                         )) +
         geom_bar(stat = "identity") +
         labs(y= "Number of Arrests", x= NULL, title= NULL) +

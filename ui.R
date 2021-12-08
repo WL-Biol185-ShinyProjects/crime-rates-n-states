@@ -81,7 +81,7 @@ ui <- shiny::navbarPage(
                              p("Which sex, state, or race has the highest arrest rate for your chosen crime?"),
                              sidebarLayout(
                                sidebarPanel(
-                                 selectizeInput("OffenseType", 
+                                 selectizeInput("offense_type", 
                                                 label = "Choose an Offense Type",
                                                 multiple = FALSE,
                                                 choices = c( "False Pretenses/Swindle/Confidence Game"   = 'False Pretenses/Swindle/Confidence Game',
@@ -146,7 +146,7 @@ ui <- shiny::navbarPage(
                                                              "Theft From Coin-Operated Machine or Device" = 'Theft From Coin-Operated Machine or Device',
                                                              "Driving Under the Influence"               = 'Driving Under the Influence')
                                             ),
-                                 selectInput("RaceSexState",
+                                 selectInput("race_sex_state",
                                              label    = "Compare by Sex, State, or Race",
                                              multiple = FALSE,
                                              choices  = c("Sex"   = 'sex', 
