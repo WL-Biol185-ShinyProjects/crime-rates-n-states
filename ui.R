@@ -159,7 +159,7 @@ ui <- shiny::navbarPage(
                                       ),
                                           )
                                   ),
-                          p("Where is this information from? FBI Crime Data reports the offense and offender's sex and race for arrest incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization."),
+                          p("FBI Crime Data reports the offense and offender's sex and race for arrest incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization."),
                           ),
               
                  navbarMenu("More",
