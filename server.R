@@ -70,6 +70,7 @@ function(input, output) {
                         )) +
         geom_bar(stat = "identity") +
         labs(y= "Number of Arrests", x= NULL, title= NULL) +
-        theme_minimal()
+        theme_minimal() + 
+        theme(axis.text.x = element_text(angle = 45))
     }) 
 }
