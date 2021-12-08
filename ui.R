@@ -19,8 +19,8 @@ ui <- shiny::navbarPage(
                            column(10,
                                     align = "center",
                                     h3("Welcome to our page!"),
-                                    p("This site analyzes crime data for different precincts around the United States reported to the FBI through the National Incident-Based Reporting System (NIBRS) in 2019. 
-                                 Here, you'll discover an interactive state map with rates of different crimes and an interactive bar graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
+                                    p("This site analyzes arrest data reported to the FBI by different precincts around the United States through the National Incident-Based Reporting System (NIBRS) in 2019. 
+                                 Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
                                     ),
                                   img(src    = "nibrs.jpg", 
                                       height = 300,
@@ -201,10 +201,11 @@ ui <- shiny::navbarPage(
                             
                             tabPanel("Citations",
                                      fluidRow(
-                                       p("Our data are from the Federal Bureau of Investigation Crime Data Explorer Page. 
-                                         All of the data are available to public. 'https://crime-data-explorer.app.cloud.gov/pages/downloads'"
-                                         )
+                                       HTML("<p>Thank you to the Federal Bureau of Investigation Crime Data Explorer Page for supplying these data. All of the data are available to the public <a href='https://crime-data-explorer.app.cloud.gov/pages/downloads'> here</a>.</p>"
+                                            )
+                                       )
+                                     
                                        )
                                      )
                           )
-                 )
+                 
