@@ -48,7 +48,7 @@ function(input, output) {
                 pal          = pal,
                 values       = ~(state_map[[input$crime_radio]]),
                 opacity      = 0.8,
-                title        = "Crime Percentage",
+                title        = "Arrest Percentage",
                 labFormat    = labelFormat(suffix = "%"))
   })    
     
