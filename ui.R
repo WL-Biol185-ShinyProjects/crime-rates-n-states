@@ -5,7 +5,7 @@ library(shinythemes)
 
 ui <- shiny::navbarPage(
   
-    theme = shinytheme("united"),
+        theme = shinytheme("united"),
   
           "Arrest Rates by States",
                 

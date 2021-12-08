@@ -11,7 +11,7 @@ aggregate_edited <- readRDS("individual_offense.RDS")
 
 function(input, output) {
   output$crime_map <- renderLeaflet({
-    #merge data frame into states
+    
     state_map@data <-  left_join(state_map@data, summary_table, by = c("NAME" = "state_full_name"))
     
     if(input$crime_radio == "percent_of_shoplifting")
@@ -26,8 +26,7 @@ function(input, output) {
     if(input$crime_radio == "percent_of_burglary")
           {pal <- colorNumeric("Blues", NULL)}
     
-    
-    map<-
+    map <-
       leaflet(data = state_map) %>%
       setView(-96, 37.8, 4)%>%
       addTiles() %>%
@@ -44,6 +43,7 @@ function(input, output) {
                                                       fillOpacity = 2,
                                                       bringToFront = TRUE
                   )) %>%
+      
       addLegend("bottomright",
                 pal          = pal,
                 values       = ~(state_map[[input$crime_radio]]),
@@ -52,23 +52,19 @@ function(input, output) {
                 labFormat    = labelFormat(suffix = "%"))
   })    
     
-    # DEMOGRAPHICS bar graph
-    
     output$demographic_bar <- renderPlot({
 
       count_df <- aggregate_edited %>% 
         group_by(sex, race, state_name) %>%
         count(offense_type) %>%
         filter(offense_type %in% !!input$offense_type)
-      
-    
 
       ggplot(data          = count_df, 
               aes_string(x = input$race_sex_state,
                          y = "n",
                          fill= input$race_sex_state
-                        )) +
-        geom_bar(stat = "identity") +
+                        ))                                 +
+        geom_bar(stat = "identity")                        +
         labs(y= "Number of Arrests", x= NULL, title= NULL) +
         theme_minimal()
     }) 
