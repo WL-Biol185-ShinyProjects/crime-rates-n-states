@@ -20,27 +20,26 @@ ui <- shiny::navbarPage(
                                     align = "center",
                                     h3("Welcome to our page!"),
                                     p("This site analyzes arrest data reported to the FBI by different precincts around the United States through the National Incident-Based Reporting System (NIBRS) in 2019. 
-                                 Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
-                                    ),
+                                       Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
+                                     ),
                                   img(src    = "nibrs.jpg", 
                                       height = 300,
-                                      ),
+                                     ),
                                   br(),
                                   br(),
                                   p("Check out how the data was classified below:"),
                                   img(src    = "nibrs_data_architecture.jpg", 
                                       height = 900,
-                                  )
-                                  )
-                                  )
-                           
+                                     )
+                                )
+                                )
                          ),
                  
                  tabPanel(div("Maps", 
                               img(src    = "map.png", 
                                   height = 15, 
                                   width  = 25,)
-                            ),
+                             ),
                           
                           fluidRow(
                             titlePanel("Mapping Arrests"),
@@ -66,8 +65,8 @@ ui <- shiny::navbarPage(
                               either choosing not to report directly to the FBI or using their own format. To navigate this problem, we calculated
                               the percentage of each type of crime by state in order to more accurately compare the crime rates between states 
                               than if we used raw arrest counts.")
-                                  )
                                 )
+                              )
                          ),
                     
                  tabPanel(div("Demographics", 
@@ -154,6 +153,7 @@ ui <- shiny::navbarPage(
                                                           "Race"  = 'race')
                                             )
                                           ),
+                               
                              mainPanel(
                                plotOutput("demographic_bar")
                                       ),
@@ -168,7 +168,8 @@ ui <- shiny::navbarPage(
                                        titlePanel("About the Creators"),
                                            align = "center", 
                                            width = 12,
-                                       column(width = 4,
+                                       column(
+                                              width      = 4,
                                               h3("Hieu Nguyen '22"),
                                               img(src    = "hieu.jpg", 
                                                   height = 300
@@ -177,7 +178,8 @@ ui <- shiny::navbarPage(
                                                 ")
                                               ),
                                        
-                                       column(width = 4,
+                                       column(
+                                              width      = 4,
                                               h3("Leah Jackson '22"),
                                               img(src    = "leah.jpg", 
                                                   height = 300
@@ -186,7 +188,8 @@ ui <- shiny::navbarPage(
                                                 ")
                                        ),
                                        
-                                       column(width = 4,
+                                       column(
+                                              width      = 4,
                                               h3("Natasha 'Tash' Gengler '22"),
                                               img(src    = "natasha.jpg", 
                                                   height = 300
@@ -194,18 +197,14 @@ ui <- shiny::navbarPage(
                                               p("Hello! My name is Natasha “Tash” Gengler, Class of 2022, from Wilmington, DE. I’m a Math major and Creative Writing minor. Some of my hobbies include DJing a radio show, vegetarian cooking, and thrift shopping. Coming from a background of absolutely no coding experience, this class has been so helpful in learning how to code for data visualization, especially with large data sets. In the future, I hope to work as a physician with a focus on rare disease research.
                                                 ")
                                        )
-                                       
-                                       
                                        ) 
                                   ),
                                       
-                            
                             tabPanel("Citations",
                                      fluidRow(
                                        HTML("<p>Thank you to the Federal Bureau of Investigation Crime Data Explorer Page for supplying these data. All of the data are available to the public <a href='https://crime-data-explorer.app.cloud.gov/pages/downloads'> here</a>.</p>"
                                             )
                                        )
-                                     
                                        )
                                      )
                           )
