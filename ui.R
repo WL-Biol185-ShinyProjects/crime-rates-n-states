@@ -7,7 +7,7 @@ ui <- shiny::navbarPage(
   
     theme = shinytheme("united"),
   
-          "Crime Rates by States",
+          "Arrest Rates by States",
                 
                 tabPanel(div("Home", 
                              img(src    = "home.png", 
@@ -43,8 +43,8 @@ ui <- shiny::navbarPage(
                             ),
                           
                           fluidRow(
-                            titlePanel("Mapping Crime"),
-                            p("Which states have the highest rate of your chosen crime?"),
+                            titlePanel("Mapping Arrests"),
+                            p("Which states have the highest rate of arrest for your chosen crime?"),
                             column(10,
                                    radioButtons("crime_radio", h3("Crime Options"),
                                                 choices = list("Shoplifting"                  = "percent_of_shoplifting", 
@@ -60,11 +60,12 @@ ui <- shiny::navbarPage(
                             br(),
                             br(),
                             box(width = 12,
-                            p("Where is this information from? States report offenses to the FBI. However, Alaska, California, Florida, New Jersey, and New York did not report any of their crimes to the FBI. 
-                              In addition, most states only reported a fraction of crimes to the FBI, with several precincts within each state 
-                              either choosing not to report directly to the FBI or using their own format. To navigate these problems, we calculated
-                              the percentage of each offense type by state in order to more accurately compare the crime rates between states 
-                              than if we used raw crime counts.")
+
+                            p("Alaska, California, Florida, New Jersey, and New York did not report any of their arrests to the FBI database. 
+                              In addition, most states only reported a fraction of arrests to the FBI, with several precincts within each state 
+                              either choosing not to report directly to the FBI or using their own format. To navigate this problem, we calculated
+                              the percentage of each type of crime by state in order to more accurately compare the crime rates between states 
+                              than if we used raw arrest counts.")
                                   )
                                 )
                          ),
@@ -77,7 +78,7 @@ ui <- shiny::navbarPage(
                               
                            fluidPage(
                              titlePanel("Demographic Breakdown by Crime"),
-                             p("Which sex, state, or race has the highest rate of your chosen crime?"),
+                             p("Which sex, state, or race has the highest arrest rate for your chosen crime?"),
                              sidebarLayout(
                                sidebarPanel(
                                  selectizeInput("OffenseType", 
@@ -158,7 +159,7 @@ ui <- shiny::navbarPage(
                                       ),
                                           )
                                   ),
-                          p("Where is this information from? FBI Crime Data reports the offense and offender's sex and race for crime incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization."),
+                          p("Where is this information from? FBI Crime Data reports the offense and offender's sex and race for arrest incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization."),
                           ),
               
                  navbarMenu("More",
