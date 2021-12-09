@@ -23,7 +23,7 @@ ui <- shiny::navbarPage(
                                        Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!",
                                       style="text-align:justify;color:black;background-color:pink;padding:15px;border-radius:10px"),
                                   img(src    = "nibrs.jpg", 
-                                      height = 300,
+                                      height = 250,
                                      ),
                                   br(),
                                   br(),
