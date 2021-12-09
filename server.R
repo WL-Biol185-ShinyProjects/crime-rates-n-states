@@ -74,11 +74,11 @@ function(input, output) {
   output$downloadData <- downloadHandler(
 
      filename = function() {
-       paste("data", '.csv', sep='.')
+       paste("arrest_data_by_all_states", Sys.Date(), ".csv", sep ="")
      },
-     content = function(file) {
-       write.csv(aggregate_edited, file)
-     }
+     content = function(con) {
+       write.csv(aggregate_edited, con)
+      }
  )
   
   
