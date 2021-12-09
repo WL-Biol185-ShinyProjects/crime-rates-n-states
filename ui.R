@@ -205,7 +205,6 @@ ui <- shiny::navbarPage(
                                        HTML("<p>Thank you to the Federal Bureau of Investigation Crime Data Explorer Page for supplying these data. All of the data are available to the public <a href='https://crime-data-explorer.app.cloud.gov/pages/downloads'> here</a>.</p>"
                                             )
                                        )
-                                       )
                                      )
                           )
                  
