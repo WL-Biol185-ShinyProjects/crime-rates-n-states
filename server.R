@@ -70,3 +70,18 @@ function(input, output) {
         theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.title = element_blank())
     }) 
 }
+
+  output$downloadData <- downloadHandler(
+     filename = function() {
+       paste('data-', Sys.Date(), '.csv', sep='')
+     },
+     content = function(con) {
+       write.csv(data, con)
+     }
+ )
+  
+  
+  
+  
+  
+  
