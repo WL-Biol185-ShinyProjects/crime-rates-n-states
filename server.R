@@ -72,11 +72,12 @@ function(input, output) {
 }
 
   output$downloadData <- downloadHandler(
+
      filename = function() {
-       paste('data-', Sys.Date(), '.csv', sep='')
+       paste("data", '.csv', sep='.')
      },
-     content = function(con) {
-       write.csv(data, con)
+     content = function(file) {
+       write.csv(aggregate_edited, file)
      }
  )
   
