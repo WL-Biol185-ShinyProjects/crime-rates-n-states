@@ -20,14 +20,14 @@ ui <- shiny::navbarPage(
                                     align = "center",
                                     h3("Welcome to our page!"),
                                     p("This site analyzes arrest data reported to the FBI by different precincts around the United States through the National Incident-Based Reporting System (NIBRS) in 2019. 
-                                       Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!"
-                                     ),
+                                       Here, you'll discover an interactive state map with rates of different crimes and an interactive graph where you can breakdown crimes by demographic groups. We hope you learn and enjoy!",
+                                      style="text-align:justify;color:black;background-color:pink;padding:15px;border-radius:10px"),
                                   img(src    = "nibrs.jpg", 
-                                      height = 300,
+                                      height = 250,
                                      ),
                                   br(),
                                   br(),
-                                  p("Check out how the data was classified below:"),
+                                  p("Check out how the data was classified below:", style="text-align:justify;color:black;background-color:pink;padding:15px;border-radius:10px"),
                                   img(src    = "nibrs_data_architecture.jpg", 
                                       height = 900,
                                      )
@@ -43,7 +43,7 @@ ui <- shiny::navbarPage(
                           
                           fluidRow(
                             titlePanel("Mapping Arrests"),
-                            p("Which states have the highest rate of arrest for your chosen crime?"),
+                            p("Which states have the highest rate of arrest for your chosen crime?", style="text-align:justify;color:black;background-color:pink;padding:15px;border-radius:10px"),
                             column(10,
                                    radioButtons("crime_radio", h3("Crime Options"),
                                                 choices = list("Shoplifting"                  = "percent_of_shoplifting", 
@@ -64,7 +64,7 @@ ui <- shiny::navbarPage(
                               In addition, most states only reported a fraction of arrests to the FBI, with several precincts within each state 
                               either choosing not to report directly to the FBI or using their own format. To navigate this problem, we calculated
                               the percentage of each type of crime by state in order to more accurately compare the crime rates between states 
-                              than if we used raw arrest counts.")
+                              than if we used raw arrest counts.", style="text-align:justify;color:black;background-color:pink;padding:15px;border-radius:10px")
                                 )
                               )
                          ),
@@ -77,7 +77,7 @@ ui <- shiny::navbarPage(
                               
                            fluidPage(
                              titlePanel("Demographic Breakdown by Crime"),
-                             p("Which sex, state, or race has the highest arrest rate for your chosen crime?"),
+                             p("Which sex, state, or race has the highest arrest rate for your chosen crime?", style="text-align:justify;color:black;background-color:pink;padding:15px;border-radius:10px"),
                              sidebarLayout(
                                sidebarPanel(
                                  selectizeInput("offense_type", 
@@ -159,7 +159,7 @@ ui <- shiny::navbarPage(
                                       ),
                                           )
                                   ),
-                          p("FBI Crime Data reports the offense and offender's sex and race for arrest incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization."),
+                          p("FBI Crime Data reports the offense and offender's sex and race for arrest incidents across the United States. The individual-level data was grouped by the offense type, sex, state, and race for visualization.", style="text-align:justify;color:black;background-color:pink;padding:15px;border-radius:10px"),
                           ),
               
                  navbarMenu("More",
