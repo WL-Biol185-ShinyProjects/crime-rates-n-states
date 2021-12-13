@@ -206,7 +206,7 @@ ui <- shiny::navbarPage(
                                             )
                                        ), 
                                      
-                                     fluidRow(
+                                     fluidPage(
                                        helpText("Click on the download button below to download our dataset"),
                                        downloadButton("downloadData", "Download")
                                      )

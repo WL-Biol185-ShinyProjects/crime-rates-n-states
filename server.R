@@ -68,18 +68,22 @@ function(input, output) {
         labs(y= "Number of Arrests", x= NULL, title= NULL) +
         theme_minimal()                                    + 
         theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.title = element_blank())
-    }) 
+    })
+    
+    output$downloadData <- downloadHandler(
+      
+      filename = function() {
+        paste("arrest_data_by_states-", Sys.Date(), ".csv", sep ="")
+      },
+      
+      content = function(file) {
+        write.csv(aggregate_edited, file)
+      }
+    )
+    
 }
 
-  output$downloadData <- downloadHandler(
 
-     filename = function() {
-       paste("arrest_data_by_all_states", Sys.Date(), ".csv", sep ="")
-     },
-     content = function(con) {
-       write.csv(aggregate_edited, con)
-      }
- )
   
   
   
