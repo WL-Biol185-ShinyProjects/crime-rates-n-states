@@ -209,8 +209,8 @@ ui <- shiny::navbarPage(
                                      fluidRow(
                                        helpText("Click on the download button below to download our dataset"),
                                        downloadButton("downloadData", "Download"),
-                                       br()
-                                       br()
+                                       br(),
+                                       br(),
                                        img(src    = "excel_screenshot.png", 
                                            height = 300
                                        )
