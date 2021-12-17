@@ -79,7 +79,6 @@ function(input, output) {
        write.csv(aggregate_edited, file)
                               }
                                         )
-  
                          }
   
   

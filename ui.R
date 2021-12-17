@@ -200,7 +200,7 @@ ui <- shiny::navbarPage(
                                        ) 
                                   ),
                                       
-                            tabPanel("Citations",
+                            tabPanel("Citations and Data Download",
                                      fluidRow(
                                        HTML("<p>Thank you to the Federal Bureau of Investigation Crime Data Explorer Page for supplying these data. All of the data are available to the public <a href='https://crime-data-explorer.app.cloud.gov/pages/downloads'> here</a>.</p>"
                                             )
@@ -208,7 +208,12 @@ ui <- shiny::navbarPage(
                                      
                                      fluidRow(
                                        helpText("Click on the download button below to download our dataset"),
-                                       downloadButton("downloadData", "Download")
+                                       downloadButton("downloadData", "Download"),
+                                       br(),
+                                       br(),
+                                       img(src    = "excel_screenshot.png", 
+                                           height = 300
+                                       )
                                      )
                                        )
                                      )
