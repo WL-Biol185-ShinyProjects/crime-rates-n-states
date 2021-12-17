@@ -69,7 +69,7 @@ function(input, output) {
         theme_minimal()                                    + 
         theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.title = element_blank())
     }) 
-}
+
 
   output$downloadData <- downloadHandler(
 
@@ -80,6 +80,7 @@ function(input, output) {
        write.csv(aggregate_edited, file)
      }
  )
+}
   
   
   
